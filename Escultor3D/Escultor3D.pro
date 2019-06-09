@@ -25,12 +25,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        colorwindow.cpp \
         main.cpp \
         mainwindow.cpp \
         plotter.cpp \
         sculptor.cpp
 
 HEADERS += \
+        colorwindow.h \
         mainwindow.h \
         plotter.h \
         sculptor.h

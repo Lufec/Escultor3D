@@ -8,6 +8,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->horizontalSliderX->setMaximum(ui->widgetPlotter->scpSizeX);
+    ui->horizontalSliderY->setMaximum(ui->widgetPlotter->scpSizeY);
+    ui->horizontalSliderZ->setMaximum(ui->widgetPlotter->scpSizeZ);
+    ui->horizontalSliderRD->setMaximum(ui->widgetPlotter->scpSizeX/2);
+    ui->horizontalSliderRX->setMaximum(ui->widgetPlotter->scpSizeX/2);
+    ui->horizontalSliderRY->setMaximum(ui->widgetPlotter->scpSizeY/2);
+    ui->horizontalSliderRZ->setMaximum(ui->widgetPlotter->scpSizeZ/2);
+    ui->horizontalSliderRed->setMaximum(255);
+    ui->horizontalSliderGreen->setMaximum(255);
+    ui->horizontalSliderBlue->setMaximum(255);
+    ui->horizontalSliderAlpha->setMaximum(255);
+    ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ);
 
     //////////////////////////////////
     connect(ui->pushButtonPV,
@@ -164,6 +176,29 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(clicked(bool)),
             this,
             SLOT(saveAll()));
+
+    ///////////////////////////////////
+
+    connect(ui->horizontalSliderRed,
+            SIGNAL(valueChanged(int)),
+            ui->widgetColor,
+            SLOT(changeRed2(int)));
+
+    connect(ui->horizontalSliderGreen,
+            SIGNAL(valueChanged(int)),
+            ui->widgetColor,
+            SLOT(changeGreen2(int)));
+
+    connect(ui->horizontalSliderBlue,
+            SIGNAL(valueChanged(int)),
+            ui->widgetColor,
+            SLOT(changeBlue2(int)));
+
+    connect(ui->horizontalSliderAlpha,
+            SIGNAL(valueChanged(int)),
+            ui->widgetColor,
+            SLOT(changeAlpha2(int)));
+
 
 }
 

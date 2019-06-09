@@ -209,7 +209,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>Box Size</string>
     </property>
     <widget class="QSlider" name="horizontalSliderX">
      <property name="geometry">
@@ -291,7 +291,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>Ellipsoid's Radius</string>
     </property>
     <widget class="QSlider" name="horizontalSliderRX">
      <property name="geometry">
@@ -373,7 +373,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>Sphere's Radius</string>
     </property>
     <widget class="QSlider" name="horizontalSliderRD">
      <property name="geometry">
@@ -543,7 +543,7 @@
      <string>VECT</string>
     </property>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="ColorWindow" name="widgetColor" native="true">
     <property name="geometry">
      <rect>
       <x>590</x>
@@ -602,7 +602,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>Slice</string>
     </property>
     <widget class="QSlider" name="horizontalSliderSlice">
      <property name="geometry">
@@ -711,6 +711,18 @@
     <signal>moveY(int)</signal>
     <signal>planeChosen(int)</signal>
     <slot>mudaFrequencia(int)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>ColorWindow</class>
+   <extends>QWidget</extends>
+   <header>colorwindow.h</header>
+   <container>1</container>
+   <slots>
+    <slot>changeRed()</slot>
+    <slot>changeGreen()</slot>
+    <slot>changeBlue()</slot>
+    <slot>changeAlpha()</slot>
    </slots>
   </customwidget>
  </customwidgets>

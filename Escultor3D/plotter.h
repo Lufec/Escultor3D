@@ -17,17 +17,14 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
 
+
     void drawShape(int shape);
 
     int plane;
     int shape;
-    Sculptor *cube;
-private:
-    std::vector<std::vector<Voxel>> m;
-    QColor lineColor;
-    QAction *actionMudaCor;
 
     int scpSizeX, scpSizeY, scpSizeZ;
+    Sculptor *cube;
 
     int colorRed;
     int colorGreen;
@@ -37,6 +34,14 @@ private:
     int sizeX,sizeY,sizeZ;
     int radius, radiusX, radiusY,radiusZ;
 
+    int radiusMax;
+
+private:
+    std::vector<std::vector<Voxel>> m;
+    QColor lineColor;
+    QAction *actionMudaCor;
+
+
     bool mousePressed;
     int mouseX,mouseY;
 
@@ -44,7 +49,7 @@ private:
 
     int slice;
 
-    float sizeSquareX,sizeSquareY;
+    int sizeSquareX,sizeSquareY;
 
 signals:
   void moveX(int);

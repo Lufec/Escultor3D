@@ -43,7 +43,7 @@ void Plotter::paintEvent(QPaintEvent *event)
     sizeSquareY = dim2;
 
 
-    if(dim1>dim2){
+    if(dim1>dim2){     //Resolver troço dos quadrados
         dim=dim2;
     }
     else {
@@ -59,14 +59,17 @@ void Plotter::paintEvent(QPaintEvent *event)
     }
 
 
-    brush.setColor(QColor(colorRed,colorGreen,colorBlue,transparency));   //Cor setada por sliders
-    brush.setStyle(Qt::SolidPattern);
-    pa.setBrush(brush);
+ //   brush.setColor(QColor(colorRed,colorGreen,colorBlue,transparency));   //Cor setada por sliders
+ //   brush.setStyle(Qt::SolidPattern);
+ //   pa.setBrush(brush);
 
 
     for(int i=0; i<m.size();i++){    //trabalhar com iterators pra desenhar voxels ligados
        for(int j=0; j<m[0].size();j++){
             if(m[i][j].isOn){
+                    brush.setColor(QColor(m[i][j].r,m[i][j].g,m[i][j].b,m[i][j].a));   //Cor setada por sliders
+                    brush.setStyle(Qt::SolidPattern);
+                    pa.setBrush(brush);
                     int xcenter =i*dim1;
                     int ycenter =j*dim2;
                     pa.drawEllipse(xcenter,ycenter,dim1,dim2);
