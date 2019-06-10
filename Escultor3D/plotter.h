@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QAction>
 #include <QColor>
+#include <QTimerEvent>
 #include <vector>
 #include "sculptor.h"
 
@@ -18,10 +19,10 @@ public:
     void mouseReleaseEvent(QMouseEvent *event);
 
 
-    void drawShape(int shape);
+    void drawShape(int shape, bool mousePressed);
 
-    int plane;
-    int shape;
+    unsigned int plane;
+    unsigned int shape;
 
     int scpSizeX, scpSizeY, scpSizeZ;
     Sculptor *cube;
@@ -35,21 +36,19 @@ public:
     int radius, radiusX, radiusY,radiusZ;
 
     int radiusMax;
+    int slice;
+
 
 private:
-    std::vector<std::vector<Voxel>> m;
-    QColor lineColor;
-    QAction *actionMudaCor;
 
+    std::vector<std::vector<Voxel>> m;
 
     bool mousePressed;
     int mouseX,mouseY;
 
     int posX,posY,posZ;
 
-    int slice;
-
-    int sizeSquareX,sizeSquareY;
+    int sizeSquare;
 
 signals:
   void moveX(int);
@@ -58,6 +57,7 @@ signals:
   void clickY(int);
   void mouseLinha(int);
   void mouseColuna(int);
+  void mouseXY(int,int);
   void planeChosen(int);
 
 public slots:

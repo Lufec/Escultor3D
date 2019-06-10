@@ -1,3 +1,6 @@
+#include <QString>
+#include <QProcess>
+#include <QtDebug>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "sculptor.h"
@@ -8,18 +11,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->horizontalSliderX->setMaximum(ui->widgetPlotter->scpSizeX);
-    ui->horizontalSliderY->setMaximum(ui->widgetPlotter->scpSizeY);
-    ui->horizontalSliderZ->setMaximum(ui->widgetPlotter->scpSizeZ);
-    ui->horizontalSliderRD->setMaximum(ui->widgetPlotter->scpSizeX/2);
-    ui->horizontalSliderRX->setMaximum(ui->widgetPlotter->scpSizeX/2);
-    ui->horizontalSliderRY->setMaximum(ui->widgetPlotter->scpSizeY/2);
-    ui->horizontalSliderRZ->setMaximum(ui->widgetPlotter->scpSizeZ/2);
+    ui->horizontalSliderX->setMaximum(ui->widgetPlotter->scpSizeX-1);
+    ui->horizontalSliderY->setMaximum(ui->widgetPlotter->scpSizeY-1);
+    ui->horizontalSliderZ->setMaximum(ui->widgetPlotter->scpSizeZ-1);
+    ui->horizontalSliderRD->setMaximum(ui->widgetPlotter->scpSizeX/2 -1);
+    ui->horizontalSliderRX->setMaximum(ui->widgetPlotter->scpSizeX/2 -1);
+    ui->horizontalSliderRY->setMaximum(ui->widgetPlotter->scpSizeY/2 -1);
+    ui->horizontalSliderRZ->setMaximum(ui->widgetPlotter->scpSizeZ/2 -1);
+
     ui->horizontalSliderRed->setMaximum(255);
     ui->horizontalSliderGreen->setMaximum(255);
     ui->horizontalSliderBlue->setMaximum(255);
     ui->horizontalSliderAlpha->setMaximum(255);
-    ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ);
+    ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ -1);
 
     //////////////////////////////////
     connect(ui->pushButtonPV,
@@ -198,7 +202,22 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(valueChanged(int)),
             ui->widgetColor,
             SLOT(changeAlpha2(int)));
+///////////////////////////////////////
 
+    connect(ui->pushButtonRotClk,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(rotClockWise()));
+
+    connect(ui->pushButtonRotCClk,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(rotCClockWise()));
+
+    connect(ui->pushButtonInv,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(inverter()));
 
 }
 
@@ -211,16 +230,26 @@ void MainWindow::changePlane1() //XY
 {
     ui->widgetPlotter->plane = 1;
     emit ui->widgetPlotter->planeChosen(1);
+    ui->widgetPlotter->slice = ui->widgetPlotter->scpSizeZ/2;
+    ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ -1);
+    ui->widgetPlotter->repaint();
+
 }
 void MainWindow::changePlane2() //XZ
 {
     ui->widgetPlotter->plane = 2;
     emit ui->widgetPlotter->planeChosen(2);
+    ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeY -1);
+    ui->widgetPlotter->slice = ui->widgetPlotter->scpSizeY/2;
+    ui->widgetPlotter->repaint();
 }
 void MainWindow::changePlane3() //YZ
 {
     ui->widgetPlotter->plane = 3;
-    emit ui->widgetPlotter->planeChosen(3);
+    emit ui->widgetPlotter->planeChosen(3);    
+    ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeX -1);
+    ui->widgetPlotter->slice = ui->widgetPlotter->scpSizeX/2;
+    ui->widgetPlotter->repaint();
 }
 
 void MainWindow::changeShape1() //PV
@@ -256,14 +285,275 @@ void MainWindow::changeShape8() //PS
     ui->widgetPlotter->shape = 8;
 }
 
+void MainWindow::rotClockWise()
+{
+    switch(ui->widgetPlotter->plane){
+    case 1: //XY1
+        ui->widgetPlotter->plane = 4;
+    break;
+    case 2: //ZX1
+        ui->widgetPlotter->plane = 5;
+    break;
+    case 3: //YZ1
+        ui->widgetPlotter->plane = 6;
+    break;
+    case 4: //XY2
+        ui->widgetPlotter->plane = 7;
+    break;
+    case 5: //ZX2
+        ui->widgetPlotter->plane = 8;
+    break;
+    case 6: //YZ2
+        ui->widgetPlotter->plane = 9;
+    break;
+    case 7:
+        ui->widgetPlotter->plane = 10;
+    break;
+    case 8:
+        ui->widgetPlotter->plane = 11;
+    break;
+    case 9:
+        ui->widgetPlotter->plane = 12;
+    break;
+    case 10:
+        ui->widgetPlotter->plane = 1;
+    break;
+    case 11:
+        ui->widgetPlotter->plane = 2;
+    break;
+    case 12:
+        ui->widgetPlotter->plane = 3;
+    break;
+
+
+    case 13:
+        ui->widgetPlotter->plane = 16;
+    break;
+    case 14:
+        ui->widgetPlotter->plane = 17;
+    break;
+    case 15:
+        ui->widgetPlotter->plane = 18;
+    break;
+    case 16:
+        ui->widgetPlotter->plane = 19;
+    break;
+    case 17:
+        ui->widgetPlotter->plane = 20;
+    break;
+    case 18:
+        ui->widgetPlotter->plane = 21;
+    break;
+    case 19:
+        ui->widgetPlotter->plane = 22;
+    break;
+    case 20:
+        ui->widgetPlotter->plane = 23;
+    break;
+    case 21:
+        ui->widgetPlotter->plane = 24;
+    break;
+    case 22:
+        ui->widgetPlotter->plane = 13;
+    break;
+    case 23:
+        ui->widgetPlotter->plane = 14;
+    break;
+    case 24:
+        ui->widgetPlotter->plane = 15;
+    break;
+    }
+    ui->widgetPlotter->repaint();
+}
+void MainWindow::rotCClockWise()
+{
+    switch(ui->widgetPlotter->plane){
+    case 1: //XY1
+        ui->widgetPlotter->plane = 10;
+    break;
+    case 2: //ZX1
+        ui->widgetPlotter->plane = 11;
+    break;
+    case 3: //YZ1
+        ui->widgetPlotter->plane = 12;
+    break;
+    case 4: //XY2
+        ui->widgetPlotter->plane = 1;
+    break;
+    case 5: //ZX2
+        ui->widgetPlotter->plane = 2;
+    break;
+    case 6: //YZ2
+        ui->widgetPlotter->plane = 3;
+    break;
+    case 7:
+        ui->widgetPlotter->plane = 4;
+    break;
+    case 8:
+        ui->widgetPlotter->plane = 5;
+    break;
+    case 9:
+        ui->widgetPlotter->plane = 6;
+    break;
+    case 10:
+        ui->widgetPlotter->plane = 7;
+    break;
+    case 11:
+        ui->widgetPlotter->plane = 8;
+    break;
+    case 12:
+        ui->widgetPlotter->plane = 9;
+    break;
+
+
+    case 13:
+        ui->widgetPlotter->plane = 22;
+    break;
+    case 14:
+        ui->widgetPlotter->plane = 23;
+    break;
+    case 15:
+        ui->widgetPlotter->plane = 24;
+    break;
+    case 16:
+        ui->widgetPlotter->plane = 13;
+    break;
+    case 17:
+        ui->widgetPlotter->plane = 14;
+    break;
+    case 18:
+        ui->widgetPlotter->plane = 15;
+    break;
+    case 19:
+        ui->widgetPlotter->plane = 16;
+    break;
+    case 20:
+        ui->widgetPlotter->plane = 17;
+    break;
+    case 21:
+        ui->widgetPlotter->plane = 18;
+    break;
+    case 22:
+        ui->widgetPlotter->plane = 19;
+    break;
+    case 23:
+        ui->widgetPlotter->plane = 20;
+    break;
+    case 24:
+        ui->widgetPlotter->plane = 21;
+    break;
+    }
+
+    ui->widgetPlotter->repaint();
+}
+
+
+void MainWindow::inverter()
+{
+    switch(ui->widgetPlotter->plane){
+    case 1: //XY1
+        ui->widgetPlotter->plane = 13;
+    break;
+    case 2: //ZX1
+        ui->widgetPlotter->plane = 14;
+    break;
+    case 3: //YZ1
+        ui->widgetPlotter->plane = 15;
+    break;
+    case 4: //XY2
+        ui->widgetPlotter->plane = 16;
+    break;
+    case 5: //ZX2
+        ui->widgetPlotter->plane = 17;
+    break;
+    case 6: //YZ2
+        ui->widgetPlotter->plane = 18;
+    break;
+    case 7:
+        ui->widgetPlotter->plane = 19;
+    break;
+    case 8:
+        ui->widgetPlotter->plane = 20;
+    break;
+    case 9:
+        ui->widgetPlotter->plane = 21;
+    break;
+    case 10:
+        ui->widgetPlotter->plane = 22;
+    break;
+    case 11:
+        ui->widgetPlotter->plane = 23;
+    break;
+    case 12:
+        ui->widgetPlotter->plane = 24;
+    break;
+
+
+    case 13:
+        ui->widgetPlotter->plane = 1;
+    break;
+    case 14:
+        ui->widgetPlotter->plane = 2;
+    break;
+    case 15:
+        ui->widgetPlotter->plane = 3;
+    break;
+    case 16:
+        ui->widgetPlotter->plane = 4;
+    break;
+    case 17:
+        ui->widgetPlotter->plane = 5;
+    break;
+    case 18:
+        ui->widgetPlotter->plane = 6;
+    break;
+    case 19:
+        ui->widgetPlotter->plane = 7;
+    break;
+    case 20:
+        ui->widgetPlotter->plane = 8;
+    break;
+    case 21:
+        ui->widgetPlotter->plane = 9;
+    break;
+    case 22:
+        ui->widgetPlotter->plane = 10;
+    break;
+    case 23:
+        ui->widgetPlotter->plane = 11;
+    break;
+    case 24:
+        ui->widgetPlotter->plane = 12;
+    break;
+    }
+
+    ui->widgetPlotter->repaint();
+}
 
 void MainWindow::saveVECT()
 {
-    ui->widgetPlotter->cube->writeVECT("/home/lufec/Escultor3D/file.vect");
+    ui->widgetPlotter->cube->writeVECT("/tmp/file.vect");
+
+
+    QProcess *process = new QProcess(this);
+    QString program = "/usr/bin/geomview";
+    QString path = "/tmp/file.vect";
+    QStringList list;
+    list << path;
+    process->start(program, list);
+    process->waitForFinished();
 }
 void MainWindow::saveOFF()
 {
-    ui->widgetPlotter->cube->writeOFF("/home/lufec/Escultor3D/file.off");
+    ui->widgetPlotter->cube->writeOFF("/tmp/file.off");
+
+    QProcess *process = new QProcess(this);
+    QString program = "/usr/bin/geomview";
+    QString path = "/tmp/file.off";
+    QStringList list;
+    list << path;
+    process->start(program, list);
+    process->waitForFinished();
 }
 void MainWindow::saveAll()
 {

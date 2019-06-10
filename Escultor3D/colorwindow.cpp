@@ -18,8 +18,9 @@ void ColorWindow::paintEvent(QPaintEvent *event)
     pen.setWidth(2);
       // entregando a caneta ao pintor
     pa.setPen(pen);
-    brush.setColor(QColor(0,0,0,255));
+    brush.setColor(QColor(colorRed,colorGreen,colorBlue,alpha));
     brush.setStyle(Qt::SolidPattern);
+    pa.setBrush(brush);
 
 
     pa.drawRect(0,0,width(),height());

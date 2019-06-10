@@ -51,7 +51,6 @@ Sculptor::Sculptor(int tx, int ty, int tz){
 
     cout<<"escultor criado com sucesso"<<endl;
 }
-
 Sculptor::~Sculptor(){
     delete [] v[0][0];
     delete [] v[0];
@@ -89,7 +88,7 @@ void Sculptor::cutVoxel( int x, int y, int z)
 {
     if(x>=nx||x<0||y>=ny||y<0||z>=nz||z<0){
         cout<<"Parâmetros em 'cutVoxel' inválidos"<<endl;
-        exit(1);
+        return;
     }
     v[x][y][z].isOn = false;
 
@@ -431,7 +430,9 @@ std::vector<std::vector<Voxel>> Sculptor::readMx(int dim, int plane){
     vector<vector<Voxel>>matriz;
     vector<Voxel> linha;
 
-    if(plane == 1){  //XY1
+    switch(plane)
+    {
+    case 1:  //XY1
         linha.resize(ny);
 
         for(int i = 0; i<nx; i++){
@@ -445,22 +446,206 @@ std::vector<std::vector<Voxel>> Sculptor::readMx(int dim, int plane){
 
             matriz.push_back(linha);
         }
-   }
-    else if(plane == 2){  //XY2
+    break;
+
+    case 2:  //ZX1
         linha.resize(nx);
 
-        for(int i = 0; i<ny; i++){
+        for(int i = 0; i<nz; i++){
             for (int j = 0; j < nx; ++j) {
-                linha[j].r=v[i][j][dim].r;
-                linha[j].g=v[i][j][dim].g;
-                linha[j].b=v[i][j][dim].b;
-                linha[j].a=v[i][j][dim].a;
+                linha[j].r=v[j][dim][i].r;
+                linha[j].g=v[j][dim][i].g;
+                linha[j].b=v[j][dim][i].b;
+                linha[j].a=v[j][dim][i].a;
+                linha[j].isOn=v[j][dim][i].isOn;
             }
 
             matriz.push_back(linha);
         }
-   }
-    else if(plane == 3){  //XZ1
+    break;
+
+    case 3:  //YZ1
+        linha.resize(nz);
+
+        for(int i = 0; i<ny; i++){
+            for (int j = 0; j < nz; ++j) {
+                linha[j].r=v[dim][i][j].r;
+                linha[j].g=v[dim][i][j].g;
+                linha[j].b=v[dim][i][j].b;
+                linha[j].a=v[dim][i][j].a;
+                linha[j].isOn=v[dim][i][j].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+
+    case 4:  //XY2
+        linha.resize(nx);
+
+        for(int i = 0; i<ny; i++){
+            for (int j=0; j<nx ; j++) {
+                int newI=ny-1-i;
+                linha[j].r=v[j][newI][dim].r;
+                linha[j].g=v[j][newI][dim].g;
+                linha[j].b=v[j][newI][dim].b;
+                linha[j].a=v[j][newI][dim].a;
+                linha[j].isOn=v[j][newI][dim].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+    break;
+
+    case 5:  //ZX2
+        linha.resize(nz);
+
+        for(int i = 0; i<nx; i++){
+            for (int j = 0; j <nz; j++) {
+                int newI=nx-1-i;
+                linha[j].r=v[newI][dim][j].r;
+                linha[j].g=v[newI][dim][j].g;
+                linha[j].b=v[newI][dim][j].b;
+                linha[j].a=v[newI][dim][j].a;
+                linha[j].isOn=v[newI][dim][j].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 6:  //YZ2
+        linha.resize(ny);
+
+        for(int i = 0; i<nz; i++){
+            for (int j = 0; j<ny; j++) {
+                int newI=nz-1-i;
+                linha[j].r=v[dim][j][newI].r;
+                linha[j].g=v[dim][j][newI].g;
+                linha[j].b=v[dim][j][newI].b;
+                linha[j].a=v[dim][j][newI].a;
+                linha[j].isOn=v[dim][j][newI].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 7:  //XY3
+        linha.resize(ny);
+
+        for(int i = 0; i<nx; i++){
+            for (int j = 0; j<ny; j++) {
+                int newI = nx-1-i;
+                int newJ= ny-1-j;
+                linha[j].r=v[newI][newJ][dim].r;
+                linha[j].g=v[newI][newJ][dim].g;
+                linha[j].b=v[newI][newJ][dim].b;
+                linha[j].a=v[newI][newJ][dim].a;
+                linha[j].isOn=v[newI][newJ][dim].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 8:  //ZX3
+        linha.resize(nx);
+
+        for(int i=0; i<nz; i++){
+            for (int j = 0; j<nx; j++) {
+                int newI = nz-1-i;
+                int newJ= nx-1-j;
+                linha[j].r=v[newJ][dim][newI].r;
+                linha[j].g=v[newJ][dim][newI].g;
+                linha[j].b=v[newJ][dim][newI].b;
+                linha[j].a=v[newJ][dim][newI].a;
+                linha[j].isOn=v[newJ][dim][newI].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 9:  //YZ3
+        linha.resize(nz);
+
+        for(int i = 0; i<ny; i++){
+            for (int j = 0; j<nz; j++) {
+                int newI = ny-1-i;
+                int newJ= nz-1-j;
+                linha[j].r=v[dim][newI][newJ].r;
+                linha[j].g=v[dim][newI][newJ].g;
+                linha[j].b=v[dim][newI][newJ].b;
+                linha[j].a=v[dim][newI][newJ].a;
+                linha[j].isOn=v[dim][newI][newJ].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 10:  //XY4
+        linha.resize(nx);
+
+        for(int i = 0 ; i<ny; i++){
+            for (int j = 0; j < nx; j++) {
+                int newJ = nx-1-j;
+                linha[j].r=v[newJ][i][dim].r;
+                linha[j].g=v[newJ][i][dim].g;
+                linha[j].b=v[newJ][i][dim].b;
+                linha[j].a=v[newJ][i][dim].a;
+                linha[j].isOn=v[newJ][i][dim].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 11:  //ZX4
+        linha.resize(nz);
+
+        for(int i = 0; i<nx; i++){
+            for (int j = 0; j < nz; j++) {
+                int newJ= nz-1-j;
+                linha[j].r=v[i][dim][newJ].r;
+                linha[j].g=v[i][dim][newJ].g;
+                linha[j].b=v[i][dim][newJ].b;
+                linha[j].a=v[i][dim][newJ].a;
+                linha[j].isOn=v[i][dim][newJ].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 12:  //YZ4
+        linha.resize(ny);
+
+        for(int i = 0; i<nz; i++){
+            for (int j = 0; j < ny; j++) {
+                int newJ= ny-1-j;
+                linha[j].r=v[dim][newJ][i].r;
+                linha[j].g=v[dim][newJ][i].g;
+                linha[j].b=v[dim][newJ][i].b;
+                linha[j].a=v[dim][newJ][i].a;
+                linha[j].isOn=v[dim][newJ][i].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+        ////////////////////////////////
+    case 13:  //YX1
+        linha.resize(nx);
+
+        for(int i = 0; i<ny; i++){
+            for (int j = 0; j < nx; ++j) {
+                linha[j].r=v[j][i][dim].r;
+                linha[j].g=v[j][i][dim].g;
+                linha[j].b=v[j][i][dim].b;
+                linha[j].a=v[j][i][dim].a;
+                linha[j].isOn=v[j][i][dim].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+    break;
+
+    case 14:  //XZ1
         linha.resize(nz);
 
         for(int i = 0; i<nx; i++){
@@ -469,54 +654,180 @@ std::vector<std::vector<Voxel>> Sculptor::readMx(int dim, int plane){
                 linha[j].g=v[i][dim][j].g;
                 linha[j].b=v[i][dim][j].b;
                 linha[j].a=v[i][dim][j].a;
+                linha[j].isOn=v[i][dim][j].isOn;
             }
 
             matriz.push_back(linha);
         }
-   }
-    else if(plane == 4){  //XZ2
-        linha.resize(nx);
+    break;
 
-        for(int i = 0; i<nz; i++){
-            for (int j = 0; j < nx; ++j) {
-                linha[j].r=v[i][dim][j].r;
-                linha[j].g=v[i][dim][j].g;
-                linha[j].b=v[i][dim][j].b;
-                linha[j].a=v[i][dim][j].a;
-            }
-
-            matriz.push_back(linha);
-        }
-   }
-    else if(plane == 5){  //YZ1
-        linha.resize(nz);
-
-        for(int i = 0; i<ny; i++){
-            for (int j = 0; j < nz; ++j) {
-                linha[j].r=v[dim][i][j].r;
-                linha[j].g=v[dim][i][j].g;
-                linha[j].b=v[dim][i][j].b;
-                linha[j].a=v[dim][i][j].a;
-            }
-
-            matriz.push_back(linha);
-        }
-   }
-    else if(plane == 6){  //YZ2
+    case 15:  //ZY1
         linha.resize(ny);
 
         for(int i = 0; i<nz; i++){
-            for (int j = 0; j < ny; ++j) {
-                linha[j].r=v[dim][i][j].r;
-                linha[j].g=v[dim][i][j].g;
-                linha[j].b=v[dim][i][j].b;
-                linha[j].a=v[dim][i][j].a;
+            for (int j = 0; j < ny; j++) {
+                linha[j].r=v[dim][j][i].r;
+                linha[j].g=v[dim][j][i].g;
+                linha[j].b=v[dim][j][i].b;
+                linha[j].a=v[dim][j][i].a;
+                linha[j].isOn=v[dim][j][i].isOn;
             }
 
             matriz.push_back(linha);
         }
-   }
+   break;
 
+    case 16:  //YX2
+        linha.resize(ny);
+
+        for(int i = 0; i<nx; i++){
+            for (int j = 0; j<ny ; j++) {
+                int jnovo=ny-1-j;
+                linha[j].r=v[i][jnovo][dim].r;
+                linha[j].g=v[i][jnovo][dim].g;
+                linha[j].b=v[i][jnovo][dim].b;
+                linha[j].a=v[i][jnovo][dim].a;
+                linha[j].isOn=v[i][jnovo][dim].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+    break;
+
+    case 17:  //XZ2
+        linha.resize(nx);
+
+        for(int i = 0; i<nz; i++){
+            for (int j = 0; j < nx; j++) {
+                int jnovo=nx-1-j;
+                linha[j].r=v[jnovo][dim][i].r;
+                linha[j].g=v[jnovo][dim][i].g;
+                linha[j].b=v[jnovo][dim][i].b;
+                linha[j].a=v[jnovo][dim][i].a;
+                linha[j].isOn=v[jnovo][dim][i].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 18:  //ZY2
+        linha.resize(nz);
+
+        for(int i = 0; i<ny; i++){
+            for (int j = 0; j <nz; j++) {
+                int jnovo=nz-1-j;
+                linha[j].r=v[dim][i][jnovo].r;
+                linha[j].g=v[dim][i][jnovo].g;
+                linha[j].b=v[dim][i][jnovo].b;
+                linha[j].a=v[dim][i][jnovo].a;
+                linha[j].isOn=v[dim][i][jnovo].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 19:  //YX3
+        linha.resize(nx);
+
+        for(int i = 0; i<ny; i++){
+            for (int j = 0; j <nx; j++) {
+                int inovo=ny-1-i;
+                int jnovo=nx-1-j;
+
+                linha[j].r=v[inovo][jnovo][dim].r;
+                linha[j].g=v[inovo][jnovo][dim].g;
+                linha[j].b=v[inovo][jnovo][dim].b;
+                linha[j].a=v[inovo][jnovo][dim].a;
+                linha[j].isOn=v[inovo][jnovo][dim].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 20:  //XZ3
+        linha.resize(nz);
+
+        for(int i = 0; i<nx; i++){
+            for (int j = 0; j<nz; j++) {
+                int inovo=nx-1-i;
+                int jnovo=nz-1-j;
+                linha[j].r=v[inovo][dim][jnovo].r;
+                linha[j].g=v[inovo][dim][jnovo].g;
+                linha[j].b=v[inovo][dim][jnovo].b;
+                linha[j].a=v[inovo][dim][jnovo].a;
+                linha[j].isOn=v[i][dim][j].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 21:  //ZY3
+        linha.resize(ny);
+
+        for(int i = 0; i<nz; i++){
+            for (int j =0; j<ny; j++) {
+                int inovo=nz-1-i;
+                int jnovo=ny-1-j;
+                linha[j].r=v[dim][inovo][jnovo].r;
+                linha[j].g=v[dim][inovo][jnovo].g;
+                linha[j].b=v[dim][inovo][jnovo].b;
+                linha[j].a=v[dim][inovo][jnovo].a;
+                linha[j].isOn=v[dim][inovo][jnovo].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 22:  //YX4
+        linha.resize(ny);
+
+        for(int i =0 ; i<nx; i++){
+            for (int j = 0; j < ny; j++) {
+                int inovo=nx-1-i;
+                linha[j].r=v[inovo][j][dim].r;
+                linha[j].g=v[inovo][j][dim].g;
+                linha[j].b=v[inovo][j][dim].b;
+                linha[j].a=v[inovo][j][dim].a;
+                linha[j].isOn=v[inovo][j][dim].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 23:  //XZ4
+        linha.resize(nx);
+
+        for(int i = 0; i<nz; i--){
+            for (int j = 0; j < nx; j++) {
+                int inovo=nz-1-i;
+                linha[j].r=v[j][dim][inovo].r;
+                linha[j].g=v[j][dim][inovo].g;
+                linha[j].b=v[j][dim][inovo].b;
+                linha[j].a=v[j][dim][inovo].a;
+                linha[j].isOn=v[j][dim][inovo].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    case 24:  //ZY4
+        linha.resize(nz);
+
+        for(int i = 0; i<ny; i--){
+            for (int j = 0; j < nz; j++) {
+                int inovo=ny-1-i;
+                linha[j].r=v[dim][inovo][j].r;
+                linha[j].g=v[dim][inovo][j].g;
+                linha[j].b=v[dim][inovo][j].b;
+                linha[j].a=v[dim][inovo][j].a;
+                linha[j].isOn=v[dim][inovo][j].isOn;
+            }
+
+            matriz.push_back(linha);
+        }
+   break;
+    }
+
+    linha.clear();
     return matriz;
 }
-

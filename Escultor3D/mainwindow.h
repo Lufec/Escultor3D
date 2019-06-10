@@ -22,9 +22,9 @@ private:
 
 public slots:
 
-void changePlane1(); //XY
-void changePlane2(); //XZ
-void changePlane3(); //YZ
+void changePlane1(); //XY1
+void changePlane2(); //ZX1
+void changePlane3(); //YZ1
 void changeShape1(); //PV
 void changeShape2(); //CV
 void changeShape3(); //PB
@@ -33,10 +33,15 @@ void changeShape5(); //PS
 void changeShape6(); //CS
 void changeShape7(); //PE
 void changeShape8(); //PS
+void rotClockWise();
+void rotCClockWise();
+void inverter();
 
 void saveVECT();
 void saveOFF();
 void saveAll();
+
+
 };
 
 #endif // MAINWINDOW_H
