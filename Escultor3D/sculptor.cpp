@@ -61,7 +61,7 @@ void Sculptor::setColor(float _r, float _g, float _b, float alpha)
 {
     if(r<0||g<0||b<0||alpha<0){
         cout<<"Parametros de 'setColor' invalidos"<<endl;
-        exit(1);
+        return;
     }
     r=_r;
     g=_g;
@@ -71,7 +71,6 @@ void Sculptor::setColor(float _r, float _g, float _b, float alpha)
 void Sculptor::putVoxel( int x, int y, int z)
 {
     if(x>=nx||x<0||y>=ny||y<0||z>=nz||z<0){
-        cout<<"Parâmetros em 'putVoxel' inválidos"<<endl;
         return;
     }
 
@@ -87,7 +86,6 @@ void Sculptor::putVoxel( int x, int y, int z)
 void Sculptor::cutVoxel( int x, int y, int z)
 {
     if(x>=nx||x<0||y>=ny||y<0||z>=nz||z<0){
-        cout<<"Parâmetros em 'cutVoxel' inválidos"<<endl;
         return;
     }
     v[x][y][z].isOn = false;

@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
         colorwindow.cpp \
+        dialogsize.cpp \
         main.cpp \
         mainwindow.cpp \
         plotter.cpp \
@@ -33,11 +34,13 @@ SOURCES += \
 
 HEADERS += \
         colorwindow.h \
+        dialogsize.h \
         mainwindow.h \
         plotter.h \
         sculptor.h
 
 FORMS += \
+        dialogsize.ui \
         mainwindow.ui
 
 # Default rules for deployment.

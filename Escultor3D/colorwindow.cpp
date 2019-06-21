@@ -3,6 +3,9 @@
 #include <QColor>
 #include <QPen>
 #include <QBrush>
+#include <QAction>
+#include <QMessageBox>
+#include <QColorDialog>
 
 ColorWindow::ColorWindow(QWidget *parent) : QWidget(parent)
 {
@@ -47,5 +50,3 @@ void ColorWindow::changeAlpha2(int _alpha)
     alpha = _alpha;
     repaint();
 }
-
-

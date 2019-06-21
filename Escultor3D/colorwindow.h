@@ -12,6 +12,7 @@ public:
     void paintEvent(QPaintEvent *event);
     int colorRed,colorGreen,colorBlue,alpha;
 
+
 private:
 signals:
 

@@ -10,7 +10,7 @@
 
 Plotter::Plotter(QWidget *parent) : QWidget(parent)
 {
-    scpSizeX = 30; scpSizeY = 25; scpSizeZ=20;    //Será setado por dialogBox
+    scpSizeX = 100; scpSizeY = 100; scpSizeZ=100;    //Será setado por dialogBox
     cube = new Sculptor(scpSizeX,scpSizeY,scpSizeZ);
 
     slice=scpSizeZ/2; plane=1;   //setado por slider e botoes
@@ -55,12 +55,6 @@ void Plotter::paintEvent(QPaintEvent *event)
             pa.drawRect(i*sizeSquare,j*sizeSquare,sizeSquare, sizeSquare);
         }
     }
-
-
- //   brush.setColor(QColor(colorRed,colorGreen,colorBlue,transparency));   //Cor setada por sliders
- //   brush.setStyle(Qt::SolidPattern);
- //   pa.setBrush(brush);
-
 
     for(unsigned int i=0; i<m.size();i++){    //trabalhar com iterators pra desenhar voxels ligados
        for(unsigned int j=0; j<m[0].size();j++){
@@ -351,14 +345,12 @@ void Plotter::mousePressEvent(QMouseEvent *event){
   }
 }
 
-
 void Plotter::mouseReleaseEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton){
        mousePressed = false;
     }
 }
-
 
 void Plotter::drawShape(int shape, bool mousePressed){
 
@@ -422,7 +414,6 @@ void Plotter::changeAlpha(int alpha)
 {
     transparency = alpha;
 }
-
 
 void Plotter::changeSizeX(int size)
 {

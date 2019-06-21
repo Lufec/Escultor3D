@@ -1,10 +1,12 @@
 #include <QString>
 #include <QProcess>
 #include <QtDebug>
+#include <QMessageBox>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "sculptor.h"
 #include "plotter.h"
+#include "dialogsize.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -218,6 +220,12 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(clicked(bool)),
             this,
             SLOT(inverter()));
+
+    connect(ui->pushButtonNewSz,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(newSize()));
+
 
 }
 
@@ -446,8 +454,6 @@ void MainWindow::rotCClockWise()
 
     ui->widgetPlotter->repaint();
 }
-
-
 void MainWindow::inverter()
 {
     switch(ui->widgetPlotter->plane){
@@ -559,4 +565,44 @@ void MainWindow::saveAll()
 {
     ui->widgetPlotter->cube->writeVECT("/home/lufec/Escultor3D/file.vect");
     ui->widgetPlotter->cube->writeOFF("/home/lufec/Escultor3D/file.off");
+}
+
+void MainWindow::newSize()
+{
+     QMessageBox box;
+     QString msg;
+     DialogSize dialog;
+
+     if(dialog.exec() == QDialog::Accepted){
+       msg = "SizeX= <b>"+QString::number(dialog.getSizeX())+
+           "</b> <br>"+
+           "SizeY = <b>"+QString::number(dialog.getSizeY())+
+           "</b> <br>"+
+           "SizeZ = <b>"+QString::number(dialog.getSizeZ())+
+           "</b>";
+       box.setText(msg);
+       box.exec();
+     }
+
+    ui->widgetPlotter->cube->~Sculptor();
+
+    ui->widgetPlotter->scpSizeX = dialog.getSizeX();
+    ui->widgetPlotter->scpSizeY = dialog.getSizeY();
+    ui->widgetPlotter->scpSizeZ = dialog.getSizeZ();
+
+    ui->widgetPlotter->cube = new Sculptor(dialog.getSizeX(),dialog.getSizeY(),dialog.getSizeZ());
+
+    ui->horizontalSliderX->setMaximum(ui->widgetPlotter->scpSizeX-1);
+    ui->horizontalSliderY->setMaximum(ui->widgetPlotter->scpSizeY-1);
+    ui->horizontalSliderZ->setMaximum(ui->widgetPlotter->scpSizeZ-1);
+    ui->horizontalSliderRD->setMaximum(ui->widgetPlotter->scpSizeX/2 -1);
+    ui->horizontalSliderRX->setMaximum(ui->widgetPlotter->scpSizeX/2 -1);
+    ui->horizontalSliderRY->setMaximum(ui->widgetPlotter->scpSizeY/2 -1);
+    ui->horizontalSliderRZ->setMaximum(ui->widgetPlotter->scpSizeZ/2 -1);
+    ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ -1);
+    ui->widgetPlotter->slice = 0;
+
+
+    ui->widgetPlotter->repaint();
+
 }

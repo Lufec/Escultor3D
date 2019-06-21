@@ -18,7 +18,6 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
 
-
     void drawShape(int shape, bool mousePressed);
 
     unsigned int plane;
@@ -38,6 +37,7 @@ public:
     int radiusMax;
     int slice;
 
+    QAction *actionSelectSize;
 
 private:
 

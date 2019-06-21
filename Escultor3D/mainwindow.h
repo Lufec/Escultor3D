@@ -41,6 +41,7 @@ void saveVECT();
 void saveOFF();
 void saveAll();
 
+void newSize();
 
 };
 
