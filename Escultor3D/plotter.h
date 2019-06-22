@@ -193,135 +193,135 @@ signals:
 
 public slots:
   ///
-  /// \brief changeSizeX
-  /// \param size
+  /// \brief changeSizeX changes the value of the X-side of Size that can be used at PutBox and CutBox
+  /// \param size is the value received by the respective slider
   ///
   void changeSizeX(int size);
   ///
-  /// \brief changeSizeY
-  /// \param size
+  /// \brief changeSizeY changes the value of the Y-side of Size that can be used at PutBox and CutBox
+  /// \param size is the value received by the respective slider
   ///
   void changeSizeY(int size);
   ///
-  /// \brief changeSizeZ
-  /// \param size
+  /// \brief changeSizeZ changes the value of the Z-side of Size that can be used at PutBox and CutBox
+  /// \param size is the value received by the respective slider
   ///
   void changeSizeZ(int size);
   ///
-  /// \brief changeRadius
-  /// \param rd
+  /// \brief changeRadius changes the value of radius that can be used at PutSphere and CutSphere
+  /// \param rd is the value received by the respective slider
   ///
   void changeRadius(int rd);
   ///
-  /// \brief changeRadiusX
-  /// \param rx
+  /// \brief changeRadiusX changes the value of X-radius that can be used at PutEllipsoid and CutEllipsoid
+  /// \param rd is the value received by the respective slider
   ///
   void changeRadiusX(int rx);
   ///
-  /// \brief changeRadiusY
-  /// \param ry
+  /// \brief changeRadiusY changes the value of Y-radius that can be used at PutEllipsoid and CutEllipsoid
+  /// \param rd is the value received by the respective slider
   ///
   void changeRadiusY(int ry);
   ///
-  /// \brief changeRadiusZ
-  /// \param rz
+  /// \brief changeRadiusZ changes the value of Z-radius that can be used at PutEllipsoid and CutEllipsoid
+  /// \param rd is the value received by the respective slider
   ///
   void changeRadiusZ(int rz);
   ///
-  /// \brief changePlane1
+  /// \brief changePlane1 changes the parameter plane to value "1" (XY)
   ///
   void changePlane1(); //XY1
   ///
-  /// \brief changePlane2
+  /// \brief changePlane2 changes the parameter plane to value "2" (ZX)
   ///
   void changePlane2(); //ZX1
   ///
-  /// \brief changePlane3
+  /// \brief changePlane3 changes the parameter plane to value "3" (YZ)
   ///
   void changePlane3(); //YZ1
   ///
-  /// \brief changeShape1
+  /// \brief changeShape1 changes the parameter shape to value "1" (PutVoxel)
   ///
   void changeShape1(); //PV
   ///
-  /// \brief changeShape2
+  /// \brief changeShape2 changes the parameter shape to value "2" (CutVoxel)
   ///
   void changeShape2(); //CV
   ///
-  /// \brief changeShape3
+  /// \brief changeShape3 changes the parameter shape to value "3" (PutBox)
   ///
   void changeShape3(); //PB
   ///
-  /// \brief changeShape4
+  /// \brief changeShape4 changes the parameter shape to value "4" (CutBox)
   ///
   void changeShape4(); //CB
   ///
-  /// \brief changeShape5
+  /// \brief changeShape5 changes the parameter shape to value "5" (PutSphere)
   ///
   void changeShape5(); //PS
   ///
-  /// \brief changeShape6
+  /// \brief changeShape6 changes the parameter shape to value "6" (CutSphere)
   ///
   void changeShape6(); //CS
   ///
-  /// \brief changeShape7
+  /// \brief changeShape7 changes the parameter shape to value "7" (PutEllipsoid)
   ///
   void changeShape7(); //PE
   ///
-  /// \brief changeShape8
+  /// \brief changeShape8 changes the parameter shape to value "8" (CutEllipsoid)
   ///
   void changeShape8(); //PS
   ///
-  /// \brief rotClockWise
+  /// \brief rotClockWise changes the parameter plane to a value that is clock-wise to the current plane position
   ///
   void rotClockWise();
   ///
-  /// \brief rotCClockWise
+  /// \brief rotCClockWise changes the parameter plane to a value that is counter clock-wise to the current plane position
   ///
   void rotCClockWise();
   ///
-  /// \brief inverter
+  /// \brief inverter changes the parameter plane to a value that is the opposite side of current plane position
   ///
   void inverter();
   ///
-  /// \brief saveVECT
+  /// \brief saveVECT executes a viewing of current sculpture in vect format. Creates temporary vect file to show
   ///
   void saveVECT();
   ///
-  /// \brief saveOFF
+  /// \brief saveOFF executes a viewing of current sculpture in OFF format. Creates temporary off file to show
   ///
   void saveOFF();
   ///
-  /// \brief saveAll
+  /// \brief saveAll save files OFF and VECT of constructed Sculptor
   ///
   void saveAll();
   ///
-  /// \brief newSize
+  /// \brief newSize opens a dialog box that changes the dimensions of a new sculpture. The old one is deleted and a new one is created.
   ///
   void newSize();
   ///
-  /// \brief changeRed
-  /// \param red
+  /// \brief changeRed changes the parameter colorRed to the value setted on slider
+  /// \param red is the value received by the slider
   ///
   void changeRed(int red);
   ///
-  /// \brief changeGreen
-  /// \param green
+  /// \brief changeGreen changes the parameter colorGreen to the value setted on slider
+  /// \param green is the value received by the slider
   ///
   void changeGreen(int green);
   ///
-  /// \brief changeBlue
-  /// \param blue
+  /// \brief changeBlue changes the parameter colorBlue to the value setted on slider
+  /// \param blue is the value received by the slider
   ///
   void changeBlue(int blue);
   ///
-  /// \brief changeAlpha
-  /// \param alpha
+  /// \brief changeAlpha changes the parameter transparency to the value setted on slider
+  /// \param alpha is the value receive by the slider
   ///
   void changeAlpha(int alpha);
   ///
-  /// \brief changeSlice
-  /// \param pln
+  /// \brief changeSlice changes the parameter slice to the value setted on slider
+  /// \param pln is the value received by the slider
   ///
   void changeSlice(int pln);
 
