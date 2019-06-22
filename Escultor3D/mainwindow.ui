@@ -708,7 +708,9 @@
     <signal>moveX(int)</signal>
     <signal>moveY(int)</signal>
     <signal>planeChosen(int)</signal>
-    <slot>mudaFrequencia(int)</slot>
+    <slot>changeRed(int)</slot>
+    <slot>changeGreen(int)</slot>
+    <slot>changeBlue(int)</slot>
    </slots>
   </customwidget>
   <customwidget>
@@ -733,12 +735,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>778</x>
-     <y>214</y>
+     <x>809</x>
+     <y>246</y>
     </hint>
     <hint type="destinationlabel">
-     <x>918</x>
-     <y>221</y>
+     <x>966</x>
+     <y>250</y>
     </hint>
    </hints>
   </connection>
@@ -749,12 +751,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>776</x>
-     <y>234</y>
+     <x>807</x>
+     <y>275</y>
     </hint>
     <hint type="destinationlabel">
-     <x>929</x>
-     <y>241</y>
+     <x>966</x>
+     <y>279</y>
     </hint>
    </hints>
   </connection>
@@ -765,12 +767,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>770</x>
-     <y>254</y>
+     <x>801</x>
+     <y>304</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>261</y>
+     <x>966</x>
+     <y>308</y>
     </hint>
    </hints>
   </connection>
@@ -781,12 +783,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>776</x>
-     <y>314</y>
+     <x>815</x>
+     <y>377</y>
     </hint>
     <hint type="destinationlabel">
-     <x>915</x>
-     <y>321</y>
+     <x>966</x>
+     <y>381</y>
     </hint>
    </hints>
   </connection>
@@ -797,12 +799,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>773</x>
-     <y>364</y>
+     <x>822</x>
+     <y>450</y>
     </hint>
     <hint type="destinationlabel">
-     <x>929</x>
-     <y>371</y>
+     <x>966</x>
+     <y>454</y>
     </hint>
    </hints>
   </connection>
@@ -813,12 +815,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>779</x>
-     <y>384</y>
+     <x>828</x>
+     <y>479</y>
     </hint>
     <hint type="destinationlabel">
-     <x>921</x>
-     <y>391</y>
+     <x>966</x>
+     <y>483</y>
     </hint>
    </hints>
   </connection>
@@ -829,12 +831,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>777</x>
-     <y>404</y>
+     <x>826</x>
+     <y>508</y>
     </hint>
     <hint type="destinationlabel">
-     <x>919</x>
-     <y>411</y>
+     <x>966</x>
+     <y>512</y>
     </hint>
    </hints>
   </connection>
@@ -845,12 +847,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>900</x>
-     <y>478</y>
+     <x>896</x>
+     <y>581</y>
     </hint>
     <hint type="destinationlabel">
-     <x>942</x>
-     <y>481</y>
+     <x>966</x>
+     <y>585</y>
     </hint>
    </hints>
   </connection>
@@ -861,12 +863,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>898</x>
-     <y>564</y>
+     <x>896</x>
+     <y>656</y>
     </hint>
     <hint type="destinationlabel">
-     <x>928</x>
-     <y>571</y>
+     <x>966</x>
+     <y>660</y>
     </hint>
    </hints>
   </connection>
@@ -877,12 +879,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>898</x>
-     <y>584</y>
+     <x>896</x>
+     <y>685</y>
     </hint>
     <hint type="destinationlabel">
-     <x>928</x>
-     <y>591</y>
+     <x>966</x>
+     <y>689</y>
     </hint>
    </hints>
   </connection>
@@ -893,12 +895,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>898</x>
-     <y>604</y>
+     <x>896</x>
+     <y>714</y>
     </hint>
     <hint type="destinationlabel">
-     <x>928</x>
-     <y>611</y>
+     <x>966</x>
+     <y>718</y>
     </hint>
    </hints>
   </connection>
@@ -909,12 +911,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>899</x>
-     <y>624</y>
+     <x>896</x>
+     <y>743</y>
     </hint>
     <hint type="destinationlabel">
-     <x>928</x>
-     <y>631</y>
+     <x>966</x>
+     <y>747</y>
     </hint>
    </hints>
   </connection>
@@ -931,6 +933,54 @@
     <hint type="destinationlabel">
      <x>537</x>
      <y>718</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderRed</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>widgetPlotter</receiver>
+   <slot>changeRed(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>757</x>
+     <y>652</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>559</x>
+     <y>645</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderGreen</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>widgetPlotter</receiver>
+   <slot>changeGreen(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>743</x>
+     <y>682</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>568</x>
+     <y>664</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderBlue</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>widgetPlotter</receiver>
+   <slot>changeBlue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>758</x>
+     <y>704</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>677</y>
     </hint>
    </hints>
   </connection>

@@ -9,7 +9,7 @@
 
 ColorWindow::ColorWindow(QWidget *parent) : QWidget(parent)
 {
-    colorRed=255;colorGreen=255;colorBlue=255;alpha=255;
+    colorRed=1;colorGreen=1;colorBlue=1;alpha=255;
 }
 
 void ColorWindow::paintEvent(QPaintEvent *event)

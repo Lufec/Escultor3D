@@ -3,21 +3,28 @@
 #include <QBrush>
 #include <QMouseEvent>
 #include <QtDebug>
+#include <QMessageBox>
+#include <QDialog>
+#include <QString>
+#include <QProcess>
 #include <vector>
 #include <iostream>
+#include "dialogsize.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 #include "plotter.h"
 #include "sculptor.h"
 
 Plotter::Plotter(QWidget *parent) : QWidget(parent)
 {
-    scpSizeX = 100; scpSizeY = 100; scpSizeZ=100;    //Será setado por dialogBox
+    scpSizeX = 50; scpSizeY = 50; scpSizeZ=50;    //Será setado por dialogBox
     cube = new Sculptor(scpSizeX,scpSizeY,scpSizeZ);
 
     slice=scpSizeZ/2; plane=1;   //setado por slider e botoes
 
     sizeX=0; sizeY=0; sizeZ=0; radius=0;radiusX=0;radiusY=0;radiusZ=0;
 
-    colorRed = 255; colorGreen=255; colorBlue=255; transparency = 255;
+    colorRed = 1; colorGreen=1; colorBlue=1; transparency = 255;
 
     shape=1;
 
@@ -449,3 +456,364 @@ void Plotter::changeSlice(int pln)
     repaint();
 }
 
+void Plotter::changePlane1() //XY
+{
+    plane = 1;
+    emit planeChosen(1);
+    slice = 0;
+    repaint();
+
+}
+void Plotter::changePlane2() //XZ
+{
+    plane = 2;
+    emit planeChosen(2);
+    slice = 0;
+    repaint();
+}
+void Plotter::changePlane3() //YZ
+{
+    plane = 3;
+    emit planeChosen(3);
+    slice = 0;
+    repaint();
+}
+
+void Plotter::changeShape1() //PV
+{
+    shape = 1;
+}
+void Plotter::changeShape2() //CV
+{
+    shape = 2;
+}
+void Plotter::changeShape3() //PB
+{
+    shape = 3;
+}
+void Plotter::changeShape4() //CB
+{
+    shape = 4;
+}
+void Plotter::changeShape5() //PS
+{
+    shape = 5;
+}
+void Plotter::changeShape6() //CS
+{
+    shape = 6;
+}
+void Plotter::changeShape7() //PE
+{
+    shape = 7;
+}
+void Plotter::changeShape8() //PS
+{
+    shape = 8;
+}
+
+void Plotter::rotClockWise()
+{
+    switch(plane){
+    case 1: //XY1
+        plane = 4;
+    break;
+    case 2: //ZX1
+        plane = 5;
+    break;
+    case 3: //YZ1
+        plane = 6;
+    break;
+    case 4: //XY2
+        plane = 7;
+    break;
+    case 5: //ZX2
+        plane = 8;
+    break;
+    case 6: //YZ2
+        plane = 9;
+    break;
+    case 7:
+        plane = 10;
+    break;
+    case 8:
+        plane = 11;
+    break;
+    case 9:
+        plane = 12;
+    break;
+    case 10:
+        plane = 1;
+    break;
+    case 11:
+        plane = 2;
+    break;
+    case 12:
+        plane = 3;
+    break;
+
+
+    case 13:
+        plane = 16;
+    break;
+    case 14:
+        plane = 17;
+    break;
+    case 15:
+        plane = 18;
+    break;
+    case 16:
+        plane = 19;
+    break;
+    case 17:
+        plane = 20;
+    break;
+    case 18:
+        plane = 21;
+    break;
+    case 19:
+        plane = 22;
+    break;
+    case 20:
+        plane = 23;
+    break;
+    case 21:
+        plane = 24;
+    break;
+    case 22:
+        plane = 13;
+    break;
+    case 23:
+        plane = 14;
+    break;
+    case 24:
+        plane = 15;
+    break;
+    }
+    repaint();
+}
+void Plotter::rotCClockWise()
+{
+    switch(plane){
+    case 1: //XY1
+        plane = 10;
+    break;
+    case 2: //ZX1
+        plane = 11;
+    break;
+    case 3: //YZ1
+        plane = 12;
+    break;
+    case 4: //XY2
+        plane = 1;
+    break;
+    case 5: //ZX2
+        plane = 2;
+    break;
+    case 6: //YZ2
+        plane = 3;
+    break;
+    case 7:
+        plane = 4;
+    break;
+    case 8:
+        plane = 5;
+    break;
+    case 9:
+        plane = 6;
+    break;
+    case 10:
+        plane = 7;
+    break;
+    case 11:
+        plane = 8;
+    break;
+    case 12:
+        plane = 9;
+    break;
+
+
+    case 13:
+        plane = 22;
+    break;
+    case 14:
+        plane = 23;
+    break;
+    case 15:
+        plane = 24;
+    break;
+    case 16:
+        plane = 13;
+    break;
+    case 17:
+        plane = 14;
+    break;
+    case 18:
+        plane = 15;
+    break;
+    case 19:
+        plane = 16;
+    break;
+    case 20:
+        plane = 17;
+    break;
+    case 21:
+        plane = 18;
+    break;
+    case 22:
+        plane = 19;
+    break;
+    case 23:
+        plane = 20;
+    break;
+    case 24:
+        plane = 21;
+    break;
+    }
+
+    repaint();
+}
+void Plotter::inverter()
+{
+    switch(plane){
+    case 1: //XY1
+        plane = 13;
+    break;
+    case 2: //ZX1
+        plane = 14;
+    break;
+    case 3: //YZ1
+        plane = 15;
+    break;
+    case 4: //XY2
+        plane = 16;
+    break;
+    case 5: //ZX2
+        plane = 17;
+    break;
+    case 6: //YZ2
+        plane = 18;
+    break;
+    case 7:
+        plane = 19;
+    break;
+    case 8:
+        plane = 20;
+    break;
+    case 9:
+        plane = 21;
+    break;
+    case 10:
+        plane = 22;
+    break;
+    case 11:
+        plane = 23;
+    break;
+    case 12:
+        plane = 24;
+    break;
+
+
+    case 13:
+        plane = 1;
+    break;
+    case 14:
+        plane = 2;
+    break;
+    case 15:
+        plane = 3;
+    break;
+    case 16:
+        plane = 4;
+    break;
+    case 17:
+        plane = 5;
+    break;
+    case 18:
+        plane = 6;
+    break;
+    case 19:
+        plane = 7;
+    break;
+    case 20:
+        plane = 8;
+    break;
+    case 21:
+        plane = 9;
+    break;
+    case 22:
+        plane = 10;
+    break;
+    case 23:
+        plane = 11;
+    break;
+    case 24:
+        plane = 12;
+    break;
+    }
+
+    repaint();
+}
+
+void Plotter::saveVECT()
+{
+    cube->writeVECT("/tmp/file.vect");
+
+
+    QProcess *process = new QProcess(this);
+    QString program = "/usr/bin/geomview";
+    QString path = "/tmp/file.vect";
+    QStringList list;
+    list << path;
+    process->start(program, list);
+    process->waitForFinished();
+}
+void Plotter::saveOFF()
+{
+    cube->writeOFF("/tmp/file.off");
+
+    QProcess *process = new QProcess(this);
+    QString program = "/usr/bin/geomview";
+    QString path = "/tmp/file.off";
+    QStringList list;
+    list << path;
+    process->start(program, list);
+    process->waitForFinished();
+}
+void Plotter::saveAll()
+{
+    cube->writeVECT("/home/lufec/Escultor3D/file.vect");
+    cube->writeOFF("/home/lufec/Escultor3D/file.off");
+}
+
+void Plotter::newSize()
+{
+     QMessageBox box;
+     QString msg;
+     DialogSize dialog;
+
+     if(dialog.exec() == QDialog::Accepted){
+       msg = "SizeX= <b>"+QString::number(dialog.getSizeX())+
+           "</b> <br>"+
+           "SizeY = <b>"+QString::number(dialog.getSizeY())+
+           "</b> <br>"+
+           "SizeZ = <b>"+QString::number(dialog.getSizeZ())+
+           "</b>";
+       box.setText(msg);
+       box.exec();
+     }
+
+    cube->~Sculptor();
+
+    scpSizeX = dialog.getSizeX();
+    scpSizeY = dialog.getSizeY();
+    scpSizeZ = dialog.getSizeZ();
+
+    cube = new Sculptor(dialog.getSizeX(),dialog.getSizeY(),dialog.getSizeZ());
+
+    slice = 0;
+
+
+    repaint();
+
+}

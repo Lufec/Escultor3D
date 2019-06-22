@@ -6,6 +6,17 @@ DialogSize::DialogSize(QWidget *parent) :
     ui(new Ui::DialogSize)
 {
     ui->setupUi(this);
+    ui->horizontalSliderSX->setTickInterval(2);
+    ui->horizontalSliderSY->setTickInterval(2);
+    ui->horizontalSliderSZ->setTickInterval(2);
+
+    ui->horizontalSliderSX->setMinimum(2);
+    ui->horizontalSliderSY->setMinimum(2);
+    ui->horizontalSliderSZ->setMinimum(2);
+
+    ui->horizontalSliderSX->setMaximum(100);
+    ui->horizontalSliderSY->setMaximum(100);
+    ui->horizontalSliderSZ->setMaximum(100);
 }
 
 DialogSize::~DialogSize()

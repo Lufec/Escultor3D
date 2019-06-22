@@ -39,10 +39,10 @@ Sculptor::Sculptor(int tx, int ty, int tz){
             }
 
             for(int k=0;k<nz;k++){
-                v[i][j][k].r=0.0;
-                v[i][j][k].g=0.0;
-                v[i][j][k].b=0.0;
-                v[i][j][k].a=0.0;
+                v[i][j][k].r=0;
+                v[i][j][k].g=0;
+                v[i][j][k].b=0;
+                v[i][j][k].a=0;
                 v[i][j][k].isOn=false;
             }
 
@@ -57,10 +57,11 @@ Sculptor::~Sculptor(){
     delete [] v;
     cout<<"sculptor deletado com sucesso"<<endl;
 }
-void Sculptor::setColor(float _r, float _g, float _b, float alpha)
+void Sculptor::setColor(int _r, int _g, int _b, int alpha)
 {
     if(r<0||g<0||b<0||alpha<0){
         cout<<"Parametros de 'setColor' invalidos"<<endl;
+        cout<<r<<" "<<g<<" "<<b<<" "<<alpha<<endl;
         return;
     }
     r=_r;
