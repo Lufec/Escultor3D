@@ -38,6 +38,8 @@ public slots:
     ///
     void updateSliceSlider();
 
+    void updateShapeText();
+
 };
 
 #endif // MAINWINDOW_H

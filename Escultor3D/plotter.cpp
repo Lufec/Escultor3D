@@ -28,6 +28,8 @@ Plotter::Plotter(QWidget *parent) : QWidget(parent)
 
     shape=1;
 
+    shapeState = "PutVoxel";
+
 }
 
 void Plotter::paintEvent(QPaintEvent *event)
@@ -459,57 +461,69 @@ void Plotter::changeSlice(int pln)
 void Plotter::changePlane1() //XY
 {
     plane = 1;
-    emit planeChosen(1);
     slice = 0;
+    planeChosen = "XY";
     repaint();
 
 }
 void Plotter::changePlane2() //XZ
 {
     plane = 2;
-    emit planeChosen(2);
     slice = 0;
+    planeChosen = "XZ";
+
     repaint();
 }
 void Plotter::changePlane3() //YZ
 {
     plane = 3;
-    emit planeChosen(3);
     slice = 0;
+    planeChosen = "YZ";
+
     repaint();
 }
+
 
 void Plotter::changeShape1() //PV
 {
     shape = 1;
+    shapeState = "Put Voxel";
+
 }
 void Plotter::changeShape2() //CV
 {
     shape = 2;
+    shapeState = "Cut Voxel";
 }
 void Plotter::changeShape3() //PB
 {
     shape = 3;
+    shapeState = "Put Box";
 }
 void Plotter::changeShape4() //CB
 {
     shape = 4;
+    shapeState = "Cut Box";
 }
 void Plotter::changeShape5() //PS
 {
     shape = 5;
+    shapeState = "Put Sphere";
 }
 void Plotter::changeShape6() //CS
 {
     shape = 6;
+    shapeState = "Cut Sphere";
 }
 void Plotter::changeShape7() //PE
 {
     shape = 7;
+    shapeState = "Put Ellipsoid";
 }
 void Plotter::changeShape8() //PS
 {
     shape = 8;
+    shapeState = "Cut Ellipsoid";
 }
 
 void Plotter::rotClockWise()

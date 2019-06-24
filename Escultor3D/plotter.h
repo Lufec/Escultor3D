@@ -102,6 +102,11 @@ public:
     unsigned int plane;
 
 
+    QString shapeState;
+
+    QString planeChosen;
+
+
 
 private:
     ///
@@ -186,10 +191,6 @@ signals:
   /// \brief mouseColuna is the value of which square was clicked on X dimension
   ///
   void mouseColuna(int);
-  ///
-  /// \brief planeChosen receives which plane was selected, and emits it signal when called.
-  ///
-  void planeChosen(int);
 
 public slots:
   ///

@@ -256,6 +256,63 @@ MainWindow::MainWindow(QWidget *parent) :
             SLOT(updateNewSliders()));
 
 
+    ////////////////////////////
+
+    connect(ui->pushButtonPV,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateShapeText()));
+
+    connect(ui->pushButtonCV,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateShapeText()));
+
+    connect(ui->pushButtonPB,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateShapeText()));
+
+    connect(ui->pushButtonCB,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateShapeText()));
+
+    connect(ui->pushButtonPS,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateShapeText()));
+
+    connect(ui->pushButtonCS,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateShapeText()));
+
+    connect(ui->pushButtonPE,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateShapeText()));
+
+    connect(ui->pushButtonCE,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateShapeText()));
+
+    connect(ui->horizontalSliderX,
+            SIGNAL(valueChanged(int)),
+            this,
+            SLOT(updateSliceSlider()));
+
+    connect(ui->horizontalSliderY,
+            SIGNAL(valueChanged(int)),
+            this,
+            SLOT(updateSliceSlider()));
+
+    connect(ui->horizontalSliderZ,
+            SIGNAL(valueChanged(int)),
+            this,
+            SLOT(updateSliceSlider()));
+
 }
 
 MainWindow::~MainWindow()
@@ -267,13 +324,22 @@ void MainWindow::updateSliceSlider()
 {
     if(ui->widgetPlotter->plane==1)  {
         ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ -1);
+        ui->textEditDim->setText(ui->widgetPlotter->planeChosen);
     }
     else if(ui->widgetPlotter->plane==2){
         ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeY -1);
+        ui->textEditDim->setText(ui->widgetPlotter->planeChosen);
     }
     else {
         ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeX -1);
+        ui->textEditDim->setText(ui->widgetPlotter->planeChosen);
     }
+
+}
+
+void MainWindow::updateShapeText()
+{
+    ui->textEditFigGeom->setText(ui->widgetPlotter->shapeState);
 
 }
 
