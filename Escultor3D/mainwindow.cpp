@@ -313,6 +313,21 @@ MainWindow::MainWindow(QWidget *parent) :
             this,
             SLOT(updateSliceSlider()));
 
+    connect(ui->pushButtonRotClk,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateSliceSlider()));
+
+    connect(ui->pushButtonRotCClk,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateSliceSlider()));
+
+    connect(ui->pushButtonInv,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(updateSliceSlider()));
+
 }
 
 MainWindow::~MainWindow()
@@ -322,11 +337,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateSliceSlider()
 {
-    if(ui->widgetPlotter->plane==1)  {
+    int plane = ui->widgetPlotter->plane;
+    if(plane==1||plane==4||plane==7||plane==10)  {
         ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ -1);
         ui->textEditDim->setText(ui->widgetPlotter->planeChosen);
     }
-    else if(ui->widgetPlotter->plane==2){
+    else if(plane==2||plane==5||plane==8||plane==11){
         ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeY -1);
         ui->textEditDim->setText(ui->widgetPlotter->planeChosen);
     }

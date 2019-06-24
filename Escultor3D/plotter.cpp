@@ -20,7 +20,7 @@ Plotter::Plotter(QWidget *parent) : QWidget(parent)
     scpSizeX = 50; scpSizeY = 50; scpSizeZ=50;    //Será setado por dialogBox
     cube = new Sculptor(scpSizeX,scpSizeY,scpSizeZ);
 
-    slice=scpSizeZ/2; plane=1;   //setado por slider e botoes
+    slice=0; plane=1;   //setado por slider e botoes
 
     sizeX=0; sizeY=0; sizeZ=0; radius=0;radiusX=0;radiusY=0;radiusZ=0;
 
@@ -154,18 +154,18 @@ void Plotter::mouseMoveEvent(QMouseEvent *event){
         posZ=slice;
     break;
     case 14:
-        posX=mouseY;
+        posX=mouseX;
         posY=slice;
-        posZ=mouseX;
+        posZ=mouseY;
     break;
     case 15:
         posX=slice;
-        posY=mouseX;
-        posZ=mouseY;
+        posY=mouseY;
+        posZ=mouseX;
     break;
     case 16:
-        posX=mouseY;
-        posY=mouseX;
+        posX=mouseX;
+        posY=scpSizeX-1-mouseY;
         posZ=slice;
     break;
     case 17:
@@ -179,8 +179,8 @@ void Plotter::mouseMoveEvent(QMouseEvent *event){
         posZ=mouseX;
     break;
     case 19:
-        posX=mouseX;
-        posY=mouseY;
+        posX=scpSizeX-mouseX;
+        posY=scpSizeY-mouseY;
         posZ=slice;
     break;
     case 20:
@@ -292,29 +292,29 @@ void Plotter::mousePressEvent(QMouseEvent *event){
         posZ=slice;
     break;
     case 14:
-        posX=mouseY;
-        posY=slice;
-        posZ=mouseX;
-    break;
-    case 15:
-        posX=slice;
-        posY=mouseX;
-        posZ=mouseY;
-    break;
-    case 16:
-        posX=mouseY;
-        posY=mouseX;
-        posZ=slice;
-    break;
-    case 17:
         posX=mouseX;
         posY=slice;
         posZ=mouseY;
     break;
-    case 18:
+    case 15:
         posX=slice;
         posY=mouseY;
         posZ=mouseX;
+    break;
+    case 16:
+        posX=mouseX;
+        posY=scpSizeX-1-mouseY;
+        posZ=slice;
+    break;
+    case 17:
+        posX=scpSizeX-1-mouseY;
+        posY=slice;
+        posZ=mouseX;
+    break;
+    case 18:
+        posX=slice;
+        posY=mouseX;
+        posZ=scpSizeZ-1-mouseY;
     break;
     case 19:
         posX=mouseX;
@@ -462,7 +462,7 @@ void Plotter::changePlane1() //XY
 {
     plane = 1;
     slice = 0;
-    planeChosen = "XY";
+    planeChosen = "XY1";
     repaint();
 
 }
@@ -470,7 +470,7 @@ void Plotter::changePlane2() //XZ
 {
     plane = 2;
     slice = 0;
-    planeChosen = "XZ";
+    planeChosen = "ZX1";
 
     repaint();
 }
@@ -478,7 +478,7 @@ void Plotter::changePlane3() //YZ
 {
     plane = 3;
     slice = 0;
-    planeChosen = "YZ";
+    planeChosen = "YZ1";
 
     repaint();
 }
@@ -531,77 +531,101 @@ void Plotter::rotClockWise()
     switch(plane){
     case 1: //XY1
         plane = 4;
+        planeChosen="XY2";
     break;
     case 2: //ZX1
         plane = 5;
+        planeChosen="ZX2";
     break;
     case 3: //YZ1
         plane = 6;
+        planeChosen="YZ2";
     break;
     case 4: //XY2
         plane = 7;
+        planeChosen="XY3";
     break;
     case 5: //ZX2
         plane = 8;
+        planeChosen="ZX3";
     break;
     case 6: //YZ2
         plane = 9;
+        planeChosen="YZ3";
     break;
     case 7:
         plane = 10;
+        planeChosen="XY4";
     break;
     case 8:
         plane = 11;
+        planeChosen="ZX4";
     break;
     case 9:
         plane = 12;
+        planeChosen="YZ4";
     break;
     case 10:
         plane = 1;
+        planeChosen="XY1";
     break;
     case 11:
         plane = 2;
+        planeChosen="ZX1";
     break;
     case 12:
         plane = 3;
+        planeChosen="YZ1";
     break;
 
 
     case 13:
         plane = 16;
+        planeChosen="YX2";
     break;
     case 14:
         plane = 17;
+        planeChosen="XZ2";
     break;
     case 15:
         plane = 18;
+        planeChosen="ZY2";
     break;
     case 16:
         plane = 19;
+        planeChosen="YX3";
     break;
     case 17:
         plane = 20;
+        planeChosen="XZ3";
     break;
     case 18:
         plane = 21;
+        planeChosen="ZY3";
     break;
     case 19:
         plane = 22;
+        planeChosen="YX4";
     break;
     case 20:
         plane = 23;
+        planeChosen="XZ4";
     break;
     case 21:
         plane = 24;
+        planeChosen="ZY4";
     break;
     case 22:
         plane = 13;
+        planeChosen="YX1";
     break;
     case 23:
         plane = 14;
+        planeChosen="XZ1";
     break;
     case 24:
         plane = 15;
+        planeChosen="ZY1";
     break;
     }
     repaint();
@@ -611,77 +635,101 @@ void Plotter::rotCClockWise()
     switch(plane){
     case 1: //XY1
         plane = 10;
+        planeChosen="XY4";
     break;
     case 2: //ZX1
         plane = 11;
+        planeChosen="ZX4";
     break;
     case 3: //YZ1
         plane = 12;
+        planeChosen="YZ4";
     break;
     case 4: //XY2
         plane = 1;
+        planeChosen="XY1";
     break;
     case 5: //ZX2
         plane = 2;
+        planeChosen="ZX1";
     break;
     case 6: //YZ2
         plane = 3;
+        planeChosen="YZ1";
     break;
     case 7:
         plane = 4;
+        planeChosen="XY2";
     break;
     case 8:
         plane = 5;
+        planeChosen="ZX2";
     break;
     case 9:
         plane = 6;
+        planeChosen="YZ2";
     break;
     case 10:
         plane = 7;
+        planeChosen="XY3";
     break;
     case 11:
         plane = 8;
+        planeChosen="ZX3";
     break;
     case 12:
         plane = 9;
+        planeChosen="YZ3";
     break;
 
 
     case 13:
         plane = 22;
+        planeChosen="YX4";
     break;
     case 14:
         plane = 23;
+        planeChosen="XZ4";
     break;
     case 15:
         plane = 24;
+        planeChosen="ZY4";
     break;
     case 16:
         plane = 13;
+        planeChosen="YX1";
     break;
     case 17:
         plane = 14;
+        planeChosen="XZ1";
     break;
     case 18:
         plane = 15;
+        planeChosen="ZY1";
     break;
     case 19:
         plane = 16;
+        planeChosen="YX2";
     break;
     case 20:
         plane = 17;
+        planeChosen="XZ2";
     break;
     case 21:
         plane = 18;
+        planeChosen="ZY2";
     break;
     case 22:
         plane = 19;
+        planeChosen="YX3";
     break;
     case 23:
         plane = 20;
+        planeChosen="XZ3";
     break;
     case 24:
         plane = 21;
+        planeChosen="ZY3";
     break;
     }
 
@@ -692,77 +740,101 @@ void Plotter::inverter()
     switch(plane){
     case 1: //XY1
         plane = 13;
+        planeChosen="YX1";
     break;
     case 2: //ZX1
         plane = 14;
+        planeChosen="XZ1";
     break;
     case 3: //YZ1
         plane = 15;
+        planeChosen="ZY1";
     break;
     case 4: //XY2
         plane = 16;
+        planeChosen="YX2";
     break;
     case 5: //ZX2
         plane = 17;
+        planeChosen="XZ2";
     break;
     case 6: //YZ2
         plane = 18;
+        planeChosen="ZY2";
     break;
     case 7:
         plane = 19;
+        planeChosen="YX3";
     break;
     case 8:
         plane = 20;
+        planeChosen="XZ3";
     break;
     case 9:
         plane = 21;
+        planeChosen="ZY3";
     break;
     case 10:
         plane = 22;
+        planeChosen="YX4";
     break;
     case 11:
         plane = 23;
+        planeChosen="XZ4";
     break;
     case 12:
         plane = 24;
+        planeChosen="ZY4";
     break;
 
 
     case 13:
         plane = 1;
+        planeChosen="XY1";
     break;
     case 14:
         plane = 2;
+        planeChosen="ZX1";
     break;
     case 15:
         plane = 3;
+        planeChosen="YZ1";
     break;
     case 16:
         plane = 4;
+        planeChosen="XY2";
     break;
     case 17:
         plane = 5;
+        planeChosen="ZX2";
     break;
     case 18:
         plane = 6;
+        planeChosen="YZ2";
     break;
     case 19:
         plane = 7;
+        planeChosen="XY3";
     break;
     case 20:
         plane = 8;
+        planeChosen="ZX3";
     break;
     case 21:
         plane = 9;
+        planeChosen="YZ3";
     break;
     case 22:
         plane = 10;
+        planeChosen="XY4";
     break;
     case 23:
         plane = 11;
+        planeChosen="ZX4";
     break;
     case 24:
         plane = 12;
+        planeChosen="YZ4";
     break;
     }
 
