@@ -39,10 +39,10 @@ Sculptor::Sculptor(int tx, int ty, int tz){
             }
 
             for(int k=0;k<nz;k++){
-                v[i][j][k].r=0;
-                v[i][j][k].g=0;
-                v[i][j][k].b=0;
-                v[i][j][k].a=0;
+                v[i][j][k].r=250;
+                v[i][j][k].g=250;
+                v[i][j][k].b=250;
+                v[i][j][k].a=250;
                 v[i][j][k].isOn=false;
             }
 

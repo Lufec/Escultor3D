@@ -30,6 +30,8 @@ Plotter::Plotter(QWidget *parent) : QWidget(parent)
 
     shapeState = "PutVoxel";
 
+    boxSize = "50 x 50 x 50";
+
 }
 
 void Plotter::paintEvent(QPaintEvent *event)
@@ -54,7 +56,7 @@ void Plotter::paintEvent(QPaintEvent *event)
     if(dim1>dim2){
         sizeSquare=dim2;
     }
-    else {
+    else if(dim2>=dim1) {
         sizeSquare=dim1;
     }
 
@@ -209,8 +211,8 @@ void Plotter::mouseMoveEvent(QMouseEvent *event){
         posZ=mouseX;
     break;
     }
-    emit mouseLinha(posX);
-    emit mouseColuna(posY);
+    emit mouseLinha(posX+1);
+    emit mouseColuna(posY+1);
 
     Plotter::drawShape(shape,mousePressed);
 
@@ -894,6 +896,8 @@ void Plotter::newSize()
     scpSizeX = dialog.getSizeX();
     scpSizeY = dialog.getSizeY();
     scpSizeZ = dialog.getSizeZ();
+
+    boxSize = QString::number(scpSizeX)+" x "+QString::number(scpSizeY)+" x "+QString::number(scpSizeZ);
 
     cube = new Sculptor(dialog.getSizeX(),dialog.getSizeY(),dialog.getSizeZ());
 

@@ -21,8 +21,11 @@ public:
     /// \param event
     ///
     void paintEvent(QPaintEvent *event);
+
+    void contextMenuEvent(QContextMenuEvent *event);
     ///
     /// \brief colorRed is the red color
+    ///
     ///
     int colorRed;
     ///
@@ -38,6 +41,7 @@ public:
     ///
     int alpha;
 
+    QAction *actionMudaCor;
 
 private:
 signals:
@@ -63,6 +67,8 @@ public slots:
     /// \param alpha is the value of transparency slider
     ///
     void changeAlpha2(int alpha);
+
+    void mudaCor();
 };
 
 #endif // COLORWINDOW_H

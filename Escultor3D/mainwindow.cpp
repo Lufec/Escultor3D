@@ -37,73 +37,73 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ -1);
 
     //////////////////////////////////
-    connect(ui->pushButtonPV,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionPutVoxel,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changeShape1()));
 
-    connect(ui->pushButtonCV,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionCutVoxel,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changeShape2()));
 
-    connect(ui->pushButtonPB,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionPutBox,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changeShape3()));
 
-    connect(ui->pushButtonCB,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionCutBox,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changeShape4()));
 
-    connect(ui->pushButtonPS,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionPutSphere,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changeShape5()));
 
-    connect(ui->pushButtonCS,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionCutSphere,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changeShape6()));
 
-    connect(ui->pushButtonPE,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionPutEllipsoid,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changeShape7()));
 
-    connect(ui->pushButtonCE,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionCutEllipsoid,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changeShape8()));
 
-    connect(ui->pushButtonXY,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionXY,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changePlane1()));
 
-    connect(ui->pushButtonXZ,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionZX,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changePlane2()));
 
-    connect(ui->pushButtonYZ,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionYZ,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(changePlane3()));
 
-    connect(ui->pushButtonXY,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionXY,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateSliceSlider()));
 
-    connect(ui->pushButtonXZ,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionZX,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateSliceSlider()));
 
-    connect(ui->pushButtonYZ,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionYZ,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateSliceSlider()));
 
@@ -172,16 +172,6 @@ MainWindow::MainWindow(QWidget *parent) :
    /////////////////////////////////////////////
 
     connect(ui->widgetPlotter,
-            SIGNAL(clickX(int)),
-            ui->lcdNumberX,
-            SLOT(display(int)));
-
-    connect(ui->widgetPlotter,
-            SIGNAL(clickY(int)),
-            ui->lcdNumberY,
-            SLOT(display(int)));
-
-    connect(ui->widgetPlotter,
             SIGNAL(mouseLinha(int)),
             ui->lcdNumberLinha,
             SLOT(display(int)));
@@ -192,18 +182,18 @@ MainWindow::MainWindow(QWidget *parent) :
             SLOT(display(int)));
 /////////////////////////////////////////
 
-    connect(ui->pushButtonOFF,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionShow_OFF,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(saveOFF()));
 
-    connect(ui->pushButtonVECT,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionShow_VECT,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(saveVECT()));
 
-    connect(ui->pushButtonSV,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionSave,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(saveAll()));
 
@@ -230,71 +220,71 @@ MainWindow::MainWindow(QWidget *parent) :
             SLOT(changeAlpha2(int)));
 ///////////////////////////////////////
 
-    connect(ui->pushButtonRotClk,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionRotClk,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(rotClockWise()));
 
-    connect(ui->pushButtonRotCClk,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionRotCClk,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(rotCClockWise()));
 
-    connect(ui->pushButtonInv,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionInvert,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(inverter()));
 
-    connect(ui->pushButtonNewSz,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionNewBox,
+            SIGNAL(triggered(bool)),
             ui->widgetPlotter,
             SLOT(newSize()));
 
-    connect(ui->pushButtonNewSz,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionNewBox,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateNewSliders()));
 
 
     ////////////////////////////
 
-    connect(ui->pushButtonPV,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionPutVoxel,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateShapeText()));
 
-    connect(ui->pushButtonCV,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionCutVoxel,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateShapeText()));
 
-    connect(ui->pushButtonPB,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionPutBox,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateShapeText()));
 
-    connect(ui->pushButtonCB,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionCutBox,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateShapeText()));
 
-    connect(ui->pushButtonPS,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionPutSphere,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateShapeText()));
 
-    connect(ui->pushButtonCS,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionCutSphere,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateShapeText()));
 
-    connect(ui->pushButtonPE,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionPutEllipsoid,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateShapeText()));
 
-    connect(ui->pushButtonCE,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionCutEllipsoid,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateShapeText()));
 
@@ -313,18 +303,18 @@ MainWindow::MainWindow(QWidget *parent) :
             this,
             SLOT(updateSliceSlider()));
 
-    connect(ui->pushButtonRotClk,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionRotClk,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateSliceSlider()));
 
-    connect(ui->pushButtonRotCClk,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionRotCClk,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateSliceSlider()));
 
-    connect(ui->pushButtonInv,
-            SIGNAL(clicked(bool)),
+    connect(ui->actionInvert,
+            SIGNAL(triggered(bool)),
             this,
             SLOT(updateSliceSlider()));
 
@@ -340,22 +330,22 @@ void MainWindow::updateSliceSlider()
     int plane = ui->widgetPlotter->plane;
     if(plane==1||plane==4||plane==7||plane==10)  {
         ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ -1);
-        ui->textEditDim->setText(ui->widgetPlotter->planeChosen);
+        ui->labelDim->setText(ui->widgetPlotter->planeChosen);
     }
     else if(plane==2||plane==5||plane==8||plane==11){
         ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeY -1);
-        ui->textEditDim->setText(ui->widgetPlotter->planeChosen);
+        ui->labelDim->setText(ui->widgetPlotter->planeChosen);
     }
     else {
         ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeX -1);
-        ui->textEditDim->setText(ui->widgetPlotter->planeChosen);
+        ui->labelDim->setText(ui->widgetPlotter->planeChosen);
     }
 
 }
 
 void MainWindow::updateShapeText()
 {
-    ui->textEditFigGeom->setText(ui->widgetPlotter->shapeState);
+    ui->labelFG->setText(ui->widgetPlotter->shapeState);
 
 }
 
@@ -370,5 +360,5 @@ void MainWindow::updateNewSliders(){
     ui->horizontalSliderRZ->setMaximum(ui->widgetPlotter->scpSizeZ/2 -1);
     ui->horizontalSliderSlice->setMaximum(ui->widgetPlotter->scpSizeZ -1);
 
-
+    ui->labelSize->setText(ui->widgetPlotter->boxSize);
 }

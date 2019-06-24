@@ -6,10 +6,22 @@
 #include <QAction>
 #include <QMessageBox>
 #include <QColorDialog>
+#include <QMenu>
+#include <QContextMenuEvent>
+#include "plotter.h"
 
 ColorWindow::ColorWindow(QWidget *parent) : QWidget(parent)
 {
     colorRed=1;colorGreen=1;colorBlue=1;alpha=255;
+    actionMudaCor = new QAction(this);
+    actionMudaCor->setText("Muda Cor");
+
+
+    connect(actionMudaCor,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(mudaCor()));
+
 }
 
 void ColorWindow::paintEvent(QPaintEvent *event)
@@ -50,3 +62,33 @@ void ColorWindow::changeAlpha2(int _alpha)
     alpha = _alpha;
     repaint();
 }
+
+void ColorWindow::mudaCor(){
+  int r, g, b;
+  QColor cor;
+  QMessageBox box;
+  QString msg;
+  QColorDialog d;
+  d.exec();
+  cor = d.selectedColor();
+  colorRed = cor.red();
+  colorGreen = cor.green();
+  colorBlue = cor.blue();
+  r = cor.red();
+  g = cor.green();
+  b = cor.blue();
+  msg = "r = <b>"+QString::number(r)+"</b> <br>"+
+      "g = <b>"+QString::number(g)+"</b> <br>"+
+      "b = <b>"+QString::number(b)+"</b>";
+  box.setText(msg);
+  box.exec();
+  repaint();
+}
+
+void ColorWindow::contextMenuEvent(QContextMenuEvent *event)
+{
+  QMenu menu(this);
+  menu.addAction(actionMudaCor);
+  menu.exec(event->globalPos());
+}
+

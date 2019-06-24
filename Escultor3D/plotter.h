@@ -100,13 +100,34 @@ public:
     /// \brief plane is the orientation and side of the box that the user will see.
     ///
     unsigned int plane;
-
-
+    ///
+    /// \brief colorRed is the Red Color of a drawed matrix.
+    ///
+    int colorRed;
+    ///
+    /// \brief colorGreen is the Green color of a drawed matrix.
+    ///
+    int colorGreen;
+    ///
+    /// \brief colorBlue is the Blue color of a drawed matrix.
+    ///
+    int colorBlue;
+    ///
+    /// \brief transparency is the transparency of a drawed matrix.
+    ///
+    int transparency;
+    ///
+    /// \brief shapeState is the text that shows which shape is selected
+    ///
     QString shapeState;
-
+    ///
+    /// \brief planeChosen is a text tha shows wich plane is selected
+    ///
     QString planeChosen;
-
-
+    ///
+    /// \brief boxSize is a text tha shows the size of the sculptor's cube
+    ///
+    QString boxSize;
 
 private:
     ///
@@ -141,22 +162,7 @@ private:
     /// \brief posZ is an variable used to draw a geometric figure. Is set based on which plane is chosen and mouse position
     ///
     int posZ;
-    ///
-    /// \brief colorRed is the Red Color of a drawed matrix.
-    ///
-    int colorRed;
-    ///
-    /// \brief colorGreen is the Green color of a drawed matrix.
-    ///
-    int colorGreen;
-    ///
-    /// \brief colorBlue is the Blue color of a drawed matrix.
-    ///
-    int colorBlue;
-    ///
-    /// \brief transparency is the transparency of a drawed matrix.
-    ///
-    int transparency;
+
     ///
     /// \brief sizeSquare is used to make the grid of plotter. Gets the smallest size of a rectangle after dividing the widget and sets grid as squares.
     ///
