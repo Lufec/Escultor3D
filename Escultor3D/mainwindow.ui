@@ -22,26 +22,130 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_12">
     <item row="0" column="0">
-     <layout class="QGridLayout" name="gridLayout_10">
+     <layout class="QGridLayout" name="gridLayout_11" columnstretch="60,30">
       <item row="0" column="0">
-       <layout class="QGridLayout" name="gridLayout_11" columnstretch="60,30">
-        <property name="horizontalSpacing">
-         <number>15</number>
+       <widget class="Plotter" name="widgetPlotter" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>471</width>
+          <height>431</height>
+         </size>
         </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
-         <widget class="Plotter" name="widgetPlotter" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>471</width>
-            <height>431</height>
-           </size>
-          </property>
-         </widget>
+         <layout class="QGridLayout" name="gridLayout_10" rowstretch="0,0,0">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Slice</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QSlider" name="horizontalSliderSlice">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLCDNumber" name="lcdNumber_8"/>
+          </item>
+         </layout>
         </item>
         <item row="0" column="1">
          <layout class="QGridLayout" name="gridLayout_8">
           <item row="0" column="0">
-           <layout class="QGridLayout" name="gridLayout_6" rowstretch="10,5,10,5">
+           <layout class="QGridLayout" name="gridLayout_6" rowstretch="10,0,0">
+            <item row="1" column="0">
+             <widget class="QGroupBox" name="groupBox_3">
+              <property name="title">
+               <string>Sphere's Radius</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_2">
+               <item row="0" column="1">
+                <widget class="QSlider" name="horizontalSliderRD">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QLCDNumber" name="lcdNumber_4"/>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>Rd</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QGroupBox" name="groupBox_2">
+              <property name="title">
+               <string>Ellipsoid's Radius</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <item row="0" column="2">
+                <widget class="QLCDNumber" name="lcdNumber_5"/>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSlider" name="horizontalSliderRY">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QLCDNumber" name="lcdNumber_6"/>
+               </item>
+               <item row="2" column="1">
+                <widget class="QSlider" name="horizontalSliderRZ">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QSlider" name="horizontalSliderRX">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>RdY</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QLCDNumber" name="lcdNumber_7"/>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string>RdZ</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_5">
+                 <property name="text">
+                  <string>RdX</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
             <item row="0" column="0">
              <widget class="QGroupBox" name="groupBox">
               <property name="title">
@@ -55,6 +159,13 @@
                  </property>
                 </widget>
                </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string>Z</string>
+                 </property>
+                </widget>
+               </item>
                <item row="0" column="1">
                 <widget class="QSlider" name="horizontalSliderX">
                  <property name="orientation">
@@ -65,27 +176,13 @@
                <item row="0" column="2">
                 <widget class="QLCDNumber" name="lcdNumber"/>
                </item>
+               <item row="2" column="2">
+                <widget class="QLCDNumber" name="lcdNumber_3"/>
+               </item>
                <item row="1" column="0">
                 <widget class="QLabel" name="label_2">
                  <property name="text">
                   <string>Y</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QSlider" name="horizontalSliderY">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_2"/>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_3">
-                 <property name="text">
-                  <string>Z</string>
                  </property>
                 </widget>
                </item>
@@ -96,120 +193,15 @@
                  </property>
                 </widget>
                </item>
-               <item row="2" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_3"/>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QGroupBox" name="groupBox_3">
-              <property name="title">
-               <string>Sphere's Radius</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_2">
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_4">
-                 <property name="text">
-                  <string>Rd</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QSlider" name="horizontalSliderRD">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_4"/>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QGroupBox" name="groupBox_2">
-              <property name="title">
-               <string>Ellipsoid's Radius</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_3">
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_5">
-                 <property name="text">
-                  <string>RdX</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QSlider" name="horizontalSliderRX">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_5"/>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_6">
-                 <property name="text">
-                  <string>RdY</string>
-                 </property>
-                </widget>
+               <item row="1" column="2">
+                <widget class="QLCDNumber" name="lcdNumber_2"/>
                </item>
                <item row="1" column="1">
-                <widget class="QSlider" name="horizontalSliderRY">
+                <widget class="QSlider" name="horizontalSliderY">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
                 </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_6"/>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_7">
-                 <property name="text">
-                  <string>RdZ</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QSlider" name="horizontalSliderRZ">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_7"/>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QGroupBox" name="groupBox_5">
-              <property name="title">
-               <string>Slice</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_4">
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_8">
-                 <property name="text">
-                  <string>Pln</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QSlider" name="horizontalSliderSlice">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_8"/>
                </item>
               </layout>
              </widget>
@@ -221,26 +213,15 @@
             <property name="sizeConstraint">
              <enum>QLayout::SetMaximumSize</enum>
             </property>
+            <item row="0" column="0">
+             <widget class="ColorWindow" name="widgetColor" native="true"/>
+            </item>
             <item row="0" column="1">
              <widget class="QGroupBox" name="groupBox_4">
               <property name="title">
                <string>Color</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_5">
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_10">
-                 <property name="text">
-                  <string>R</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QSlider" name="horizontalSliderRed">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
                <item row="0" column="2">
                 <widget class="QLCDNumber" name="lcdNumber_9"/>
                </item>
@@ -251,15 +232,12 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="1">
-                <widget class="QSlider" name="horizontalSliderGreen">
+               <item row="0" column="1">
+                <widget class="QSlider" name="horizontalSliderRed">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
                 </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_10"/>
                </item>
                <item row="2" column="0">
                 <widget class="QLabel" name="label_11">
@@ -268,22 +246,15 @@
                  </property>
                 </widget>
                </item>
-               <item row="2" column="1">
-                <widget class="QSlider" name="horizontalSliderBlue">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_11"/>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_12">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_10">
                  <property name="text">
-                  <string>A</string>
+                  <string>R</string>
                  </property>
                 </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QLCDNumber" name="lcdNumber_12"/>
                </item>
                <item row="3" column="1">
                 <widget class="QSlider" name="horizontalSliderAlpha">
@@ -292,14 +263,35 @@
                  </property>
                 </widget>
                </item>
-               <item row="3" column="2">
-                <widget class="QLCDNumber" name="lcdNumber_12"/>
+               <item row="1" column="2">
+                <widget class="QLCDNumber" name="lcdNumber_10"/>
+               </item>
+               <item row="2" column="1">
+                <widget class="QSlider" name="horizontalSliderBlue">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string>A</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSlider" name="horizontalSliderGreen">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QLCDNumber" name="lcdNumber_11"/>
                </item>
               </layout>
              </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="ColorWindow" name="widgetColor" native="true"/>
             </item>
            </layout>
           </item>
@@ -307,53 +299,53 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="0">
-       <layout class="QGridLayout" name="gridLayout_9" columnstretch="0,0,0,0,2">
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QGridLayout" name="gridLayout_9" columnstretch="0,0,0,0,2">
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout_14">
         <item row="0" column="0">
-         <layout class="QGridLayout" name="gridLayout_14">
-          <item row="0" column="0">
-           <widget class="QLCDNumber" name="lcdNumberLinha"/>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLCDNumber" name="lcdNumberColuna"/>
-          </item>
-         </layout>
+         <widget class="QLCDNumber" name="lcdNumberLinha"/>
         </item>
         <item row="0" column="1">
-         <widget class="QLabel" name="labelDim">
-          <property name="text">
-           <string>XY1</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QLabel" name="labelFG">
-          <property name="text">
-           <string>Put Voxel</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>278</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="4">
-         <widget class="QLabel" name="labelSize">
-          <property name="text">
-           <string>50 x 50 x 50</string>
-          </property>
-         </widget>
+         <widget class="QLCDNumber" name="lcdNumberColuna"/>
         </item>
        </layout>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="labelDim">
+        <property name="text">
+         <string>XY1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="labelFG">
+        <property name="text">
+         <string>Put Voxel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>278</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="labelSize">
+        <property name="text">
+         <string>50 x 50 x 50</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -433,51 +425,115 @@
    <addaction name="actionNewBox"/>
   </widget>
   <action name="actionPutVoxel">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index2.jpeg</normaloff>:/new/prefix1/images/index2.jpeg</iconset>
+   </property>
    <property name="text">
     <string>Put Voxel</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
   </action>
   <action name="actionCutVoxel">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index1.jpeg</normaloff>:/new/prefix1/images/index1.jpeg</iconset>
+   </property>
    <property name="text">
     <string>cutVoxel</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="actionPutBox">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index5.jpeg</normaloff>:/new/prefix1/images/index5.jpeg</iconset>
+   </property>
    <property name="text">
     <string>putBox</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
   </action>
   <action name="actionCutBox">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index6.jpeg</normaloff>:/new/prefix1/images/index6.jpeg</iconset>
+   </property>
    <property name="text">
     <string>cutBox</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
   </action>
   <action name="actionPutSphere">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index4.jpeg</normaloff>:/new/prefix1/images/index4.jpeg</iconset>
+   </property>
    <property name="text">
     <string>putSphere</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
   </action>
   <action name="actionCutSphere">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index3.jpeg</normaloff>:/new/prefix1/images/index3.jpeg</iconset>
+   </property>
    <property name="text">
     <string>cutSphere</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
   </action>
   <action name="actionPutEllipsoid">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index14.jpeg</normaloff>:/new/prefix1/images/index14.jpeg</iconset>
+   </property>
    <property name="text">
     <string>putEllipsoid</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
   </action>
   <action name="actionCutEllipsoid">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index13.jpeg</normaloff>:/new/prefix1/images/index13.jpeg</iconset>
+   </property>
    <property name="text">
     <string>cutEllipsoid</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
   </action>
   <action name="actionRotClk">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index7.jpeg</normaloff>:/new/prefix1/images/index7.jpeg</iconset>
+   </property>
    <property name="text">
     <string>RotClk</string>
    </property>
   </action>
   <action name="actionRotCClk">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index8.jpeg</normaloff>:/new/prefix1/images/index8.jpeg</iconset>
+   </property>
    <property name="text">
     <string>RotCClk</string>
    </property>
@@ -488,23 +544,51 @@
    </property>
   </action>
   <action name="actionNewBox">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index12.jpeg</normaloff>:/new/prefix1/images/index12.jpeg</iconset>
+   </property>
    <property name="text">
     <string>NewBox</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="actionShow_OFF">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index9.jpeg</normaloff>:/new/prefix1/images/index9.jpeg</iconset>
+   </property>
    <property name="text">
     <string>Show_OFF</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionShow_VECT">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index10.jpeg</normaloff>:/new/prefix1/images/index10.jpeg</iconset>
+   </property>
    <property name="text">
     <string>Show_VECT</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/new/prefix1/images/index11.jpeg</normaloff>:/new/prefix1/images/index11.jpeg</iconset>
+   </property>
    <property name="text">
     <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionXY">
@@ -553,7 +637,9 @@
    </slots>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="imagens.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>horizontalSliderX</sender>
@@ -563,11 +649,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>1008</x>
-     <y>116</y>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
      <x>1078</x>
-     <y>120</y>
+     <y>150</y>
     </hint>
    </hints>
   </connection>
@@ -579,11 +665,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>1008</x>
-     <y>150</y>
+     <y>204</y>
     </hint>
     <hint type="destinationlabel">
      <x>1078</x>
-     <y>154</y>
+     <y>208</y>
     </hint>
    </hints>
   </connection>
@@ -595,11 +681,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>1008</x>
-     <y>184</y>
+     <y>262</y>
     </hint>
     <hint type="destinationlabel">
      <x>1078</x>
-     <y>188</y>
+     <y>266</y>
     </hint>
    </hints>
   </connection>
@@ -611,11 +697,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>1008</x>
-     <y>265</y>
+     <y>366</y>
     </hint>
     <hint type="destinationlabel">
      <x>1078</x>
-     <y>269</y>
+     <y>370</y>
     </hint>
    </hints>
   </connection>
@@ -627,11 +713,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>1008</x>
-     <y>346</y>
+     <y>439</y>
     </hint>
     <hint type="destinationlabel">
      <x>1078</x>
-     <y>350</y>
+     <y>443</y>
     </hint>
    </hints>
   </connection>
@@ -643,11 +729,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>1008</x>
-     <y>380</y>
+     <y>468</y>
     </hint>
     <hint type="destinationlabel">
      <x>1078</x>
-     <y>384</y>
+     <y>472</y>
     </hint>
    </hints>
   </connection>
@@ -659,27 +745,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>1008</x>
-     <y>414</y>
+     <y>497</y>
     </hint>
     <hint type="destinationlabel">
      <x>1078</x>
-     <y>418</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>horizontalSliderSlice</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>lcdNumber_8</receiver>
-   <slot>display(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1008</x>
-     <y>494</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1078</x>
-     <y>498</y>
+     <y>501</y>
     </hint>
    </hints>
   </connection>
@@ -792,6 +862,22 @@
     <hint type="destinationlabel">
      <x>553</x>
      <y>677</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderSlice</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber_8</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>601</x>
+     <y>626</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>635</x>
+     <y>661</y>
     </hint>
    </hints>
   </connection>

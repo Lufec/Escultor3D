@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images/index14.jpeg</file>
+        <file>images/index13.jpeg</file>
+        <file>images/index12.jpeg</file>
+        <file>images/index11.jpeg</file>
+        <file>images/index10.jpeg</file>
+        <file>images/index9.jpeg</file>
+        <file>images/index8.jpeg</file>
+        <file>images/index7.jpeg</file>
+        <file>images/index6.jpeg</file>
+        <file>images/index5.jpeg</file>
+        <file>images/index4.jpeg</file>
+        <file>images/index3.jpeg</file>
+        <file>images/index2.jpeg</file>
+        <file>images/index1.jpeg</file>
+    </qresource>
+</RCC>

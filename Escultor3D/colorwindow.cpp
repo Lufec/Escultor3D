@@ -17,11 +17,6 @@ ColorWindow::ColorWindow(QWidget *parent) : QWidget(parent)
     actionMudaCor->setText("Muda Cor");
 
 
-    connect(actionMudaCor,
-            SIGNAL(triggered(bool)),
-            this,
-            SLOT(mudaCor()));
-
 }
 
 void ColorWindow::paintEvent(QPaintEvent *event)

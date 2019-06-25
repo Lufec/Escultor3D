@@ -318,6 +318,10 @@ MainWindow::MainWindow(QWidget *parent) :
             this,
             SLOT(updateSliceSlider()));
 
+    connect(ui->widgetColor->actionMudaCor,
+            SIGNAL(triggered(bool)),
+            ui->widgetColor,
+            SLOT(mudaCor()));
 }
 
 MainWindow::~MainWindow()

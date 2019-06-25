@@ -59,9 +59,9 @@ Sculptor::~Sculptor(){
 }
 void Sculptor::setColor(int _r, int _g, int _b, int alpha)
 {
-    if(r<0||g<0||b<0||alpha<0){
+    if(_r<0||_g<0||_b<0||alpha<0){
         cout<<"Parametros de 'setColor' invalidos"<<endl;
-        cout<<r<<" "<<g<<" "<<b<<" "<<alpha<<endl;
+        cout<<_r<<" "<<_g<<" "<<_b<<" "<<alpha<<endl;
         return;
     }
     r=_r;
