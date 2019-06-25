@@ -40,6 +40,8 @@
  
 ## Rotating Functions
 
+<img src="https://user-images.githubusercontent.com/30414428/60138964-8ede8080-9782-11e9-8f49-1e78997ee090.png" width="500px;">
+
 
 ### Rotate Clock Wise
 
