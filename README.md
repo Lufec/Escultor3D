@@ -2,7 +2,7 @@
   (explicação)
 ## Interface
  (texto)
- ![alt text](https://raw.githubusercontent.com/Lufec/Escutor3D/master/Escultor3D/images/Screenshot from 2019-06-25 18-20-07.png)
+ ![alt text](https://raw.githubusercontent.com/Lufec/Escutor3D/master/Escultor3D/images/interface.png)
 ## Types of Geometric Figures
 
 ### Put Voxel
