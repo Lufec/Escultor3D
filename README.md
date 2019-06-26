@@ -13,7 +13,8 @@
  
 ### Cut Voxel
 
-(colocarei img dps)
+<img src="https://user-images.githubusercontent.com/30414428/60147529-243e3c80-97a4-11e9-9d70-460c54728e17.png" width="500px;">
+
 ### Put Box
 
  <img src="https://user-images.githubusercontent.com/30414428/60138956-8dad5380-9782-11e9-8ac3-41d06f0dcbca.png" width="500px;">
@@ -28,7 +29,7 @@
  
 ### Cut Sphere
 
- <img src="https://user-images.githubusercontent.com/30414428/60138949-871edc00-9782-11e9-9030-ebac49c52a17.png" width="500px;">
+ <img src="https://user-images.githubusercontent.com/30414428/60138950-871edc00-9782-11e9-989d-4807c0a2747b.png" width="500px;">
  
 ### Put Ellipsoid
 
@@ -36,7 +37,7 @@
  
 ### Cut Ellipsoid
 
- <img src="https://user-images.githubusercontent.com/30414428/60138963-8e45ea00-9782-11e9-91d9-6b53603a4bca.png" width="500px;">
+ <img src="https://user-images.githubusercontent.com/30414428/60138949-871edc00-9782-11e9-9030-ebac49c52a17.png" width="500px;">
  
 ## Rotating Functions
 
@@ -50,18 +51,18 @@
 ### Rotate Counter Clock Wise
 
  <img src="https://user-images.githubusercontent.com/30414428/60138960-8e45ea00-9782-11e9-99af-16b253159357.png" width="500px;">
- 
-### Invert
 
-## Show Functions 
+
+## Functions 
 
 ### Show OFF 
 
  <img src="https://user-images.githubusercontent.com/30414428/60138951-871edc00-9782-11e9-90d8-fff7709b0a59.png" width="500px;">
- 
-### Show Vect
 
-## Save
+### Save
 
-## New Box Sculptor
-(colocarei img dps)
+### New Box Sculptor
+
+ <img src="https://user-images.githubusercontent.com/30414428/60147530-243e3c80-97a4-11e9-90d6-805d978daadd.png" width="500px;">
+
+
