@@ -349,8 +349,8 @@ void Plotter::mousePressEvent(QMouseEvent *event){
         posZ=mouseX;
     break;
     }
-    emit mouseLinha(posX);
-    emit mouseColuna(posY);
+    emit mouseLinha(posX+1);
+    emit mouseColuna(posY+1);
 
     Plotter::drawShape(shape,mousePressed);
   }

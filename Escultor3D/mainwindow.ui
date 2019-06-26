@@ -59,7 +59,7 @@
         <item row="0" column="1">
          <layout class="QGridLayout" name="gridLayout_8">
           <item row="0" column="0">
-           <layout class="QGridLayout" name="gridLayout_6" rowstretch="10,0,0">
+           <layout class="QGridLayout" name="gridLayout_6" rowstretch="10,5,10">
             <item row="1" column="0">
              <widget class="QGroupBox" name="groupBox_3">
               <property name="title">
@@ -499,7 +499,7 @@
   <action name="actionPutEllipsoid">
    <property name="icon">
     <iconset resource="imagens.qrc">
-     <normaloff>:/new/prefix1/images/index14.jpeg</normaloff>:/new/prefix1/images/index14.jpeg</iconset>
+     <normaloff>:/new/prefix1/images/index13.png</normaloff>:/new/prefix1/images/index13.png</iconset>
    </property>
    <property name="text">
     <string>putEllipsoid</string>
@@ -511,7 +511,7 @@
   <action name="actionCutEllipsoid">
    <property name="icon">
     <iconset resource="imagens.qrc">
-     <normaloff>:/new/prefix1/images/index13.jpeg</normaloff>:/new/prefix1/images/index13.jpeg</iconset>
+     <normaloff>:/new/prefix1/images/index14.png</normaloff>:/new/prefix1/images/index14.png</iconset>
    </property>
    <property name="text">
     <string>cutEllipsoid</string>
@@ -588,7 +588,7 @@
     <string>Save</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+S</string>
+    <string>Ctrl+I</string>
    </property>
   </action>
   <action name="actionXY">
